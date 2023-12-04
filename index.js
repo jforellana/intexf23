@@ -28,4 +28,8 @@ app.get('/', (req,res) => {
     res.render('index');
 });
 
+app.get('/survey', (req,res) => {
+    res.render('survey');
+});
+
 app.listen(port, () => console.log('Intex is listening'));
