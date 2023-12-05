@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -11,15 +12,20 @@
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body id="page-top">
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container px-4 px-lg-5">
             <a class="navbar-brand" href="/">Home</a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
                 Menu
                 <i class="fas fa-bars"></i>
             </button>
@@ -27,7 +33,7 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#about">Dashboard</a></li>
                     <li class="nav-item"><a class="nav-link" href="/survey">Survey</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#signup">Database</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/login">Database</a></li>
                 </ul>
             </div>
         </div>
@@ -38,7 +44,8 @@
             <div class="d-flex justify-content-center">
                 <div class="text-center">
                     <h1 class="mx-auto my-0 text-uppercase">Take Our Survey</h1>
-                    <h2 class="text-white-50 mx-auto mt-2 mb-5">Help us raise awareness for mental health issues by taking our 5 minute survey</h2>
+                    <h2 class="text-white-50 mx-auto mt-2 mb-5">Help us raise awareness for mental health issues by
+                        taking our 5 minute survey</h2>
                     <a class="btn btn-primary" href="#personal-info">Take Survey</a>
                 </div>
             </div>
@@ -52,7 +59,8 @@
                 <fieldset>
                     <legend>Personal Information</legend>
                     <form action="post-survey" method="post">
-                        <label for="age">Enter your age</label> <input type="number" placeholder="Age" id="age" required>
+                        <label for="age">Enter your age</label> <input type="number" placeholder="Age" id="age"
+                            required>
                         <br><br>
                         <label for="gender">Select your gender</label>
                         <select name="gender" id="gender" required>
@@ -82,17 +90,23 @@
                         <br><br>
                         <fieldset style="display: inline-block;">
                             <legend>Check all Organizations you are affiliated with: </legend>
-                            <input type="checkbox" id="school" name="affiliation" value="SS" required><label for="school">School</label>
+                            <input type="checkbox" id="school" name="affiliation" value="SS" required><label
+                                for="school">School</label>
                             <br>
-                            <input type="checkbox" id="university" name="affiliation" value="US" required><label for="university">University</label>
+                            <input type="checkbox" id="university" name="affiliation" value="US" required><label
+                                for="university">University</label>
                             <br>
-                            <input type="checkbox" id="private" name="affiliation" value="PR" required><label for="private">Private</label>
+                            <input type="checkbox" id="private" name="affiliation" value="PR" required><label
+                                for="private">Private</label>
                             <br>
-                            <input type="checkbox" id="government" name="affiliation" value="GOV"required><label for="government">Government</label>
+                            <input type="checkbox" id="government" name="affiliation" value="GOV" required><label
+                                for="government">Government</label>
                             <br>
-                            <input type="checkbox" id="company" name="affiliation" value="CO" required><label for="company">Company</label>
+                            <input type="checkbox" id="company" name="affiliation" value="CO" required><label
+                                for="company">Company</label>
                             <br>
-                            <input type="checkbox" id="null" name="affiliation" value="NA" required><label for="null">N/A</label>
+                            <input type="checkbox" id="null" name="affiliation" value="NA" required><label
+                                for="null">N/A</label>
                         </fieldset>
                         <br><br>
                         <label for="location">Select your location</label>
@@ -108,7 +122,7 @@
             <div class="col-lg-3"></div>
         </div>
     </section>
-    
+
     <section class="projects-section bg-light">
         <div class="row">
             <div class="col-lg-3"></div>
@@ -125,36 +139,45 @@
                         <br><br>
                         <!--Facebook, Twitter, Instagram, YouTube, Discord, Reddit, Pinterest, Snapchat, TikTok-->
                         <fieldset style="display: inline-block;">
-                        <legend>What Social media Platforms do you use?</legend>
-                        <p>(select all that apply)</p>
-                        <input type="checkbox" id="fb" name="platforms" value="FB" required><label for="fb">Facebook</label>
-                        <br>
-                        <input type="checkbox" id="twitter" name="platforms" value="TW" required><label for="twitter">Twitter</label>
-                        <br>
-                        <input type="checkbox" id="instagram" name="platforms" value="IG" required><label for="instagram">Instagram</label>
-                        <br>
-                        <input type="checkbox" id="youtube" name="platforms" value="YT" required><label for="youtube">YouTube</label>
-                        <br>
-                        <input type="checkbox" id="discord" name="platforms" value="DC" required><label for="discord">Discord</label>
-                        <br>
-                        <input type="checkbox" id="reddit" name="platforms" value="RE" required><label for="reddit">Reddit</label>
-                        <br>
-                        <input type="checkbox" id="pinterest" name="platforms" value="PT" required><label for="pinterest">Pinterest</label>
-                        <br>
-                        <input type="checkbox" id="snapchat" name="platforms" value="SC" required><label for="snapchat">SnapChat</label>
-                        <br>
-                        <input type="checkbox" id="tiktok" name="platforms" value="TT" required><label for="tiktok">TikTok</label>
-                    </fieldset>
-                    <br><br>
-                    <label for="time-spent">What is the average time you spend on Social Media every day?</label>
-                    <select name="time-spent" id="time-spent" required>
-                        <option value="" disabled selected>- select -</option>
-                        <option value="lessthan1">Less than an hour</option>
-                        <option value="1and2">Between 1 and 2 hours</option>
-                        <option value="2and3">Between 2 and 3 hours</option>
-                        <option value="3and4">Between 3 and 4 hours</option>
-                        <option value="4and5">Between 4 and 5 hours</option>
-                        <option value="over5">More than 5 hours</option>
+                            <legend>What Social media Platforms do you use?</legend>
+                            <p>(select all that apply)</p>
+                            <input type="checkbox" id="fb" name="platforms" value="FB" required><label
+                                for="fb">Facebook</label>
+                            <br>
+                            <input type="checkbox" id="twitter" name="platforms" value="TW" required><label
+                                for="twitter">Twitter</label>
+                            <br>
+                            <input type="checkbox" id="instagram" name="platforms" value="IG" required><label
+                                for="instagram">Instagram</label>
+                            <br>
+                            <input type="checkbox" id="youtube" name="platforms" value="YT" required><label
+                                for="youtube">YouTube</label>
+                            <br>
+                            <input type="checkbox" id="discord" name="platforms" value="DC" required><label
+                                for="discord">Discord</label>
+                            <br>
+                            <input type="checkbox" id="reddit" name="platforms" value="RE" required><label
+                                for="reddit">Reddit</label>
+                            <br>
+                            <input type="checkbox" id="pinterest" name="platforms" value="PT" required><label
+                                for="pinterest">Pinterest</label>
+                            <br>
+                            <input type="checkbox" id="snapchat" name="platforms" value="SC" required><label
+                                for="snapchat">SnapChat</label>
+                            <br>
+                            <input type="checkbox" id="tiktok" name="platforms" value="TT" required><label
+                                for="tiktok">TikTok</label>
+                        </fieldset>
+                        <br><br>
+                        <label for="time-spent">What is the average time you spend on Social Media every day?</label>
+                        <select name="time-spent" id="time-spent" required>
+                            <option value="" disabled selected>- select -</option>
+                            <option value="lessthan1">Less than an hour</option>
+                            <option value="1and2">Between 1 and 2 hours</option>
+                            <option value="2and3">Between 2 and 3 hours</option>
+                            <option value="3and4">Between 3 and 4 hours</option>
+                            <option value="4and5">Between 4 and 5 hours</option>
+                            <option value="over5">More than 5 hours</option>
                         </select>
                     </form>
                     <br>
@@ -165,63 +188,79 @@
             <div class="col-lg-3"></div>
         </div>
     </section>
-    
+
     <section class="projects-section bg-light">
         <div class="row">
             <div class="col-lg-3"></div>
-            <div class="col-lg-6"  id="survey">
+            <div class="col-lg-6" id="survey">
                 <fieldset>
                     <legend>Survey Questions</legend>
                     <p>Please answer the following questions using the following range:</p>
-                    <p>1 - Never <br> 2 - Rarely  <br> 3 - Sometimes <br> 4 - Frequently <br> 5 - Always
+                    <p>1 - Never <br> 2 - Rarely <br> 3 - Sometimes <br> 4 - Frequently <br> 5 - Always
                     </p>
-                    <label for="q1">1. How often do you find yourself using social media without a specific purpose?</label>
+                    <label for="q1">1. How often do you find yourself using social media without a specific
+                        purpose?</label>
                     <label id="amount1"></label><br>
-                    <input type="range" id="q1" value="1" step="1" min="1" max="5" onchange="showValue(1, this.value);" required>
+                    <input type="range" id="q1" value="1" step="1" min="1" max="5" onchange="showValue(1, this.value);"
+                        required>
                     <br>
-                    <label for="q2">2. How often do you get distracted by social media when you are busy doing something?</label> 
+                    <label for="q2">2. How often do you get distracted by social media when you are busy doing
+                        something?</label>
                     <label id="amount2"></label><br>
-                    <input type="range" id="q2" value="1" step="1" min="1" max="5" onchange="showValue(2, this.value);" required>
+                    <input type="range" id="q2" value="1" step="1" min="1" max="5" onchange="showValue(2, this.value);"
+                        required>
                     <br>
-                    <label for="q3">3. Do you feel restless if you haven’t used social media in a while?</label> 
+                    <label for="q3">3. Do you feel restless if you haven’t used social media in a while?</label>
                     <label id="amount3"></label><br>
-                    <input type="range" id="q3" value="1" step="1" min="1" max="5" onchange="showValue(3, this.value);" required>
+                    <input type="range" id="q3" value="1" step="1" min="1" max="5" onchange="showValue(3, this.value);"
+                        required>
                     <br>
-                    <label for="q4">4. How easily distracted are you?</label> 
+                    <label for="q4">4. How easily distracted are you?</label>
                     <label id="amount4"></label><br>
-                    <input type="range" id="q4" value="1" step="1" min="1" max="5" onchange="showValue(4, this.value);" required>
+                    <input type="range" id="q4" value="1" step="1" min="1" max="5" onchange="showValue(4, this.value);"
+                        required>
                     <br>
-                    <label for="q5">5. How much are you bothered by worries?</label> 
+                    <label for="q5">5. How much are you bothered by worries?</label>
                     <label id="amount5"></label><br>
-                    <input type="range" id="q5" value="1" step="1" min="1" max="5" onchange="showValue(5, this.value);" required>
+                    <input type="range" id="q5" value="1" step="1" min="1" max="5" onchange="showValue(5, this.value);"
+                        required>
                     <br>
-                    <label for="q6">6. Do you find it difficult to concentrate on things?</label> 
+                    <label for="q6">6. Do you find it difficult to concentrate on things?</label>
                     <label id="amount6"></label><br>
-                    <input type="range" id="q6" value="1" step="1" min="1" max="5" onchange="showValue(6, this.value);" required>
+                    <input type="range" id="q6" value="1" step="1" min="1" max="5" onchange="showValue(6, this.value);"
+                        required>
                     <br>
-                    <label for="q7">7. How often do you compare yourself to other successful people through the use of social media?</label> 
+                    <label for="q7">7. How often do you compare yourself to other successful people through the use of
+                        social media?</label>
                     <label id="amount7"></label>
-                    <input type="range" id="q7" value="1" step="1" min="1" max="5" onchange="showValue(7, this.value);" required>
+                    <input type="range" id="q7" value="1" step="1" min="1" max="5" onchange="showValue(7, this.value);"
+                        required>
                     <br>
-                    <label for="q8">8. Following the previous question, how do you feel about these comparisons, generally speaking?</label> 
+                    <label for="q8">8. Following the previous question, how do you feel about these comparisons,
+                        generally speaking?</label>
                     <label id="amount8"></label>
-                    <input type="range" id="q8" value="1" step="1" min="1" max="5" onchange="showValue(8, this.value);" required>
+                    <input type="range" id="q8" value="1" step="1" min="1" max="5" onchange="showValue(8, this.value);"
+                        required>
                     <br>
-                    <label for="q9">9. How often do you look to seek validation from features of social media?</label> 
+                    <label for="q9">9. How often do you look to seek validation from features of social media?</label>
                     <label id="amount9"></label><br>
-                    <input type="range" id="q9" value="1" step="1" min="1" max="5" onchange="showValue(9, this.value);" required>
+                    <input type="range" id="q9" value="1" step="1" min="1" max="5" onchange="showValue(9, this.value);"
+                        required>
                     <br>
-                    <label for="q10">10. How often do you feel depressed or down?</label> 
+                    <label for="q10">10. How often do you feel depressed or down?</label>
                     <label id="amount10"></label><br>
-                    <input type="range" id="q10" value="1" step="1" min="1" max="5" onchange="showValue(10, this.value);" required>
+                    <input type="range" id="q10" value="1" step="1" min="1" max="5"
+                        onchange="showValue(10, this.value);" required>
                     <br>
-                    <label for="q11">11. How frequently does your interest in daily activities fluctuate?</label> 
+                    <label for="q11">11. How frequently does your interest in daily activities fluctuate?</label>
                     <label id="amount11"></label><br>
-                    <input type="range" id="q11" value="1" step="1" min="1" max="5" onchange="showValue(11, this.value);" required>
+                    <input type="range" id="q11" value="1" step="1" min="1" max="5"
+                        onchange="showValue(11, this.value);" required>
                     <br>
-                    <label for="q12">12. How often do you face issues regarding sleep?</label> 
+                    <label for="q12">12. How often do you face issues regarding sleep?</label>
                     <label id="amount12"></label><br>
-                    <input type="range" id="q12" value="1" step="1" min="1" max="5" onchange="showValue(12, this.value);" required>
+                    <input type="range" id="q12" value="1" step="1" min="1" max="5"
+                        onchange="showValue(12, this.value);" required>
                     <br>
                 </fieldset>
                 <br>
@@ -241,4 +280,5 @@
     </script>
 
 </body>
+
 </html>
