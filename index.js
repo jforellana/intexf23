@@ -60,23 +60,30 @@ app.post("/post-survey", (req, res) => {
 });
 
 app.get('/database', (req,res) => {
-    let query = knex.select().from('main_db');
+    let pagelimit = req.body.limit || 7;
+
+    let query = knex.select().from('main_db').limit(pagelimit);
     query.toString();
     query.then(db => {
         res.render('database', {db:db});
     })
 });
 
+app.post('/database', (req, res) => {
+    let perpage = req.body.limit || 5;
+    let page = req.body.page || 1;
+    if (page < 1) page = 1;
+    let offset = (page - 1) * perpage;
+
+    let query = knex.select().from('main_db').limit(perpage).offset(offset);
+    query.toString();
+    query.then(db => {
+        res.render('database', {db:db});
+    })
+})
+
 app.get("/survey", (req, res) => {
   res.render("survey");
-});
-
-app.get("/database", (req, res) => {
-  let query = knex.select().from("main_db");
-  query.toString();
-  query.then((db) => {
-    res.render("database", { db: db });
-  });
 });
 
 app.get("/login", (req, res) => {

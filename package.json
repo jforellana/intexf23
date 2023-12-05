@@ -2,9 +2,12 @@
   "dependencies": {
     "ejs": "^3.1.9",
     "express": "^4.18.2",
+    "griddle-react": "^1.13.1",
     "knex": "^3.0.1",
     "node": "^21.2.0",
-    "pg": "^8.11.3"
+    "pg": "^8.11.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "name": "intexf23",
   "version": "1.0.0",
@@ -12,8 +15,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "devStart": "nodemon index.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
 }
