@@ -151,8 +151,4 @@ app.get("/createAccount", (req, res) => {
   res.render("createAccount");
 });
 
-app.get("/modify", (req, res) =>{
-  res.render("modify");
-})
-
 app.listen(port, () => console.log("Intex is listening"));
