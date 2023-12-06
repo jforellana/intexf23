@@ -160,6 +160,7 @@
 
       if ((enteredUsername == localStorage.getItem("username")) && (enteredPassword == localStorage.getItem("password"))) {
         window.location.href = "/";
+        localStorage.setItem("loggedin", "True");
       } else {
         alert("Invalid username or password");
       }
