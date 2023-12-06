@@ -46,6 +46,7 @@
                     <li class="nav-item"><a class="nav-link" href="/survey">Survey</a></li>
                     <li class="nav-item"><a class="nav-link" href="/database">Database</a></li>
                     <li class="nav-item" onclick="logout()"><a class="nav-link" href="/login" id="login">Login</a></li>
+                    <li class="nav-item" id="modify"><a class="nav-link" href="/modify"><i class="fas fa-user"></i></a></li>
                 </ul>
             </div>
         </div>
@@ -170,16 +171,19 @@
             document.getElementById("login").href = "#";
             document.getElementById("login").innerHTML = "Logout";
             document.getElementById("create").style.visibility = "visible";
+            document.getElementById("modify").style.visibility = "hidden";
         }
         else if ((localStorage.getItem("loggedin") == 'True') && (localStorage.getItem("admin") == 'False')) {
             document.getElementById("login").href = "#";
             document.getElementById("login").innerHTML = "Logout";
             document.getElementById("create").style.visibility = "hidden";
+            document.getElementById("modify").style.visibility = "visible";
         }
         else {
             document.getElementById("login").href = "/login";
             document.getElementById("login").innerHTML = "Login";
             document.getElementById("create").style.visibility = "hidden";
+            document.getElementById("modify").style.visibility = "hidden";
         }
 
     </script>
