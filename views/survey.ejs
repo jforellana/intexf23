@@ -92,27 +92,88 @@
                                 <option value="Retired">Retired</option>
                             </select>
                             <br><br>
-                            <fieldset style="display: inline-block;">
-                                <legend>Check all Organizations you are affiliated with: </legend>
-                                <input class="mx-1" type="checkbox" id="school" name="affiliation" value="1"><label for="school">School (High School or younger)</label>
-                                <br>
-                                <input class="mx-1" type="checkbox" id="university" name="affiliation" value="2"><label for="university">University</label>
-                                <br>
-                                <input class="mx-1" type="checkbox" id="private" name="affiliation" value="3"><label for="private">Private</label>
-                                <br>
-                                <input class="mx-1" type="checkbox" id="government" name="affiliation" value="4"><label for="government">Government</label>
-                                <br>
-                                <input class="mx-1" type="checkbox" id="company" name="affiliation" value="5"><label for="company">Company</label>
-                                <br>
-                                <input class="mx-1" type="checkbox" id="null" name="affiliation" value="6"><label for="null">N/A</label>
-                            </fieldset>
-                            <br><br>
+                            <legend>Check all Organizations you are affiliated with: </legend>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <label for="school">School</label>
+                                    </td>
+                                    <td>
+                                        <select name="a_school" id="school">
+                                        <option value="" disabled selected>- select -</option>
+                                        <option value="1">yes</option>
+                                        <option value="0">no</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="university">University</label>
+                                    </td>
+                                    <td>
+                                        <select name="a_university" id="university">
+                                            <option value="" disabled selected>- select -</option>
+                                            <option value="1">yes</option>
+                                            <option value="0">no</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="private">Private</label>
+                                    </td>
+                                    <td>
+                                        <select name="a_private" id="private">
+                                            <option value="" disabled selected>- select -</option>
+                                            <option value="1">yes</option>
+                                            <option value="0">no</option>
+                                        </select>
+                                    </td>
+                                </tr>      
+                                <tr>
+                                    <td>
+                                        <label for="government">Government</label>
+                                    </td>
+                                    <td>
+                                        <select name="a_government" id="government">
+                                            <option value="" disabled selected>- select -</option>
+                                            <option value="1">yes</option>
+                                            <option value="0">no</option>
+                                        </select>
+                                    </td>
+                                </tr>                          
+                                <tr>
+                                    <td>
+                                        <label for="company">Company</label>
+                                    </td>
+                                    <td>
+                                        <select name="a_company" id="company">
+                                            <option value="" disabled selected>- select -</option>
+                                            <option value="1">yes</option>
+                                            <option value="0">no</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="null">None</label>
+                                    </td>
+                                    <td>
+                                        <select name="a_null" id="null">
+                                            <option value="" disabled selected>- select -</option>
+                                            <option value="1">yes</option>
+                                            <option value="0">no</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
                             <label for="location">Select your location</label>
                             <select name="location" id="location" required>
                                 <option value="Provo" selected>Provo</option>
                                 <option value="Plainsville">Plainsville</option>
                             </select>
-                        <br><br>
+                            <br><br>
                         <a class="btn btn-primary" href="#socials">Next</a>
                     </fieldset>
                     <fieldset class="projects-section">
@@ -125,27 +186,119 @@
                         </select>
                         <br><br>
                         <!--Facebook, Twitter, Instagram, YouTube, Discord, Reddit, Pinterest, Snapchat, TikTok-->
-                        <fieldset style="display: inline-block;">
-                            <legend>What Social media Platforms do you use?</legend>
-                            <p>(select all that apply)</p>
-                            <input class="mx-1" type="checkbox" id="fb" name="platforms" value="1"><label for="fb">Facebook</label>
-                            <br>
-                            <input class="mx-1" type="checkbox" id="twitter" name="platforms" value="2"><label for="twitter">Twitter</label>
-                            <br>
-                            <input class="mx-1" type="checkbox" id="instagram" name="platforms" value="3"><label for="instagram">Instagram</label>
-                            <br>
-                            <input class="mx-1" type="checkbox" id="youtube" name="platforms" value="4"><label for="youtube">YouTube</label>
-                            <br>
-                            <input class="mx-1" type="checkbox" id="discord" name="platforms" value="5"><label for="discord">Discord</label>
-                            <br>
-                            <input class="mx-1" type="checkbox" id="reddit" name="platforms" value="6"><label for="reddit">Reddit</label>
-                            <br>
-                            <input class="mx-1" type="checkbox" id="pinterest" name="platforms" value="7"><label for="pinterest">Pinterest</label>
-                            <br>
-                            <input class="mx-1" type="checkbox" id="snapchat" name="platforms" value="8"><label for="snapchat">SnapChat</label>
-                            <br>
-                            <input class="mx-1" type="checkbox" id="tiktok" name="platforms" value="9"><label for="tiktok">TikTok</label>
-                        </fieldset>
+                        <legend>What Social media Platforms do you use?</legend>
+                        <p>(select all that apply)</p>
+                        <table>
+                            <tr>
+                                <td>
+                                    <label for="facebook">Facebook</label>
+                                </td>
+                                <td>
+                                    <select name="p_facebook" id="facebook">
+                                        <option disabled selected>- select -</option>
+                                        <option value="1">yes</option>
+                                        <option value="0">no</option>
+                                    </select>
+                                </td>
+                            </tr>                            
+                            <tr>
+                                <td>
+                                    <label for="twitter">Twitter</label>
+                                </td>
+                                <td>
+                                    <select name="p_twitter" id="twitter">
+                                        <option disabled selected>- select -</option>
+                                        <option value="1">yes</option>
+                                        <option value="0">no</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="instagram">Instagram</label>
+                                </td>
+                                <td>
+                                    <select name="p_instagram" id="instagram">
+                                        <option disabled selected>- select -</option>
+                                        <option value="1">yes</option>
+                                        <option value="0">no</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="youtube">Youtube</label>
+                                </td>
+                                <td>
+                                    <select name="p_youtube" id="youtube">
+                                        <option disabled selected>- select -</option>
+                                        <option value="1">yes</option>
+                                        <option value="0">no</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="discord">Discord</label>
+                                </td>
+                                <td>
+                                    <select name="p_discord" id="discord">
+                                        <option disabled selected>- select -</option>
+                                        <option value="1">yes</option>
+                                        <option value="0">no</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="reddit">Reddit</label>
+                                </td>
+                                <td>
+                                    <select name="p_reddit" id="reddit">
+                                        <option disabled selected>- select -</option>
+                                        <option value="1">yes</option>
+                                        <option value="0">no</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="pinterest">Pinterest</label>
+                                </td>
+                                <td>
+                                    <select name="p_pinterest" id="pinterest">
+                                        <option disabled selected>- select -</option>
+                                        <option value="1">yes</option>
+                                        <option value="0">no</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    <label for="snapchat">Snapchat</label>
+                                </td>
+                                <td>
+                                    <select name="p_snapchat" id="snapchat">
+                                        <option disabled selected>- select -</option>
+                                        <option value="1">yes</option>
+                                        <option value="0">no</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="tiktok">Tiktok</label>
+                                </td>
+                                <td>
+                                    <select name="p_tiktok" id="tiktok">
+                                        <option disabled selected>- select -</option>
+                                        <option value="1">yes</option>
+                                        <option value="0">no</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
                         <br><br>
                         <label for="avg_time_social">What is the average time you spend on Social Media every day?</label>
                         <select name="avg_time_social" id="avg_time_social" required>
