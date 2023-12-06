@@ -28,14 +28,57 @@ app.get("/", (req, res) => {
 
 app.post("/post-survey", (req, res) => {
   let date = new Date();
+  const selectedaffiliations = req.body.affiliation
+  const selectedplatforms = req.body.platforms
 
-  knex("main_db").insert({
+  if ((selectedaffiliations.length > 0) && (selectedplatforms.length > 0)){
+    for (const affil of selectedaffiliations){
+      for(const plat of selectedplatforms){
+        knex("main_db").insert({
+          Date: date.toISOString().split('T')[0] + ' ' + date.toTimeString().split(' ')[0],
+          Age: req.body.age,
+          Gender: req.body.gender,
+          Affiliation_No: affil,
+          Platform_No: plat
+        })
+      }
+      
+    }
+  }
+  else if ((selectedaffiliations.length > 0) && (selectedplatforms.length = 0)){
+    for (const affil of selectedaffiliations){
+      knex("main_db").insert({
+        Date: date.toISOString().split('T')[0] + ' ' + date.toTimeString().split(' ')[0],
+        Age: req.body.age,
+        Gender: req.body.gender,
+        Affiliation_No: affil,
+        Platform_No: selectedplatforms
+      })
+      
+    }
+  }
+  else if ((selectedaffiliations.length = 0) && (selectedplatforms.length > 0)){
+    for(const plat of selectedplatforms){
+      knex("main_db").insert({
+        Date: date.toISOString().split('T')[0] + ' ' + date.toTimeString().split(' ')[0],
+        Age: req.body.age,
+        Gender: req.body.gender,
+        Affiliation_No: selectedaffiliations,
+        Platform_No: plat
+      })
+    }
+  }
+  else{
+    knex("main_db").insert({
       Date: date.toISOString().split('T')[0] + ' ' + date.toTimeString().split(' ')[0],
       Age: req.body.age,
       Gender: req.body.gender,
-      Affiliation_No: req.body.affiliation,
-      Platform_No: req.body.platforms
-  })
+      Affiliation_No: selectedaffiliations,
+      Platform_No: selectedplatforms
+    })
+  }
+  
+
   knex("survey_db").insert({
       Date: date.toISOString().split('T')[0] + ' ' + date.toTimeString().split(' ')[0],
       Age: req.body.age,
