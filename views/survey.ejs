@@ -407,20 +407,20 @@
         </div>
     </section>
     <script>
-        if(localStorage.getItem("loggedin") == 'True'){
+        if ((localStorage.getItem("loggedin") == 'True') && (localStorage.getItem("admin") == 'True')) {
             document.getElementById("login").href = "#";
             document.getElementById("login").innerHTML = "Logout";
             document.getElementById("create").style.visibility = "visible";
         }
-        else{
+        else if ((localStorage.getItem("loggedin") == 'True') && (localStorage.getItem("admin") == 'False')) {
+            document.getElementById("login").href = "#";
+            document.getElementById("login").innerHTML = "Logout";
+            document.getElementById("create").style.visibility = "hidden";
+        }
+        else {
             document.getElementById("login").href = "/login";
             document.getElementById("login").innerHTML = "Login";
             document.getElementById("create").style.visibility = "hidden";
-        }
-
-        function showValue(questionNumber, iAmount) {
-            let amountId = 'amount' + questionNumber;
-            document.getElementById(amountId).innerHTML = iAmount;
         }
     </script>
 

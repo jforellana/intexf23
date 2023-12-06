@@ -6,6 +6,7 @@
     <script>
         function logout() {
             localStorage.setItem("loggedin", 'False');
+            localStorage.setItem("admin", "False");
             location.reload()
         }
     </script>
@@ -165,10 +166,15 @@
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 
     <script>
-        if (localStorage.getItem("loggedin") == 'True') {
+        if ((localStorage.getItem("loggedin") == 'True') && (localStorage.getItem("admin") == 'True')) {
             document.getElementById("login").href = "#";
             document.getElementById("login").innerHTML = "Logout";
             document.getElementById("create").style.visibility = "visible";
+        }
+        else if ((localStorage.getItem("loggedin") == 'True') && (localStorage.getItem("admin") == 'False')) {
+            document.getElementById("login").href = "#";
+            document.getElementById("login").innerHTML = "Logout";
+            document.getElementById("create").style.visibility = "hidden";
         }
         else {
             document.getElementById("login").href = "/login";
