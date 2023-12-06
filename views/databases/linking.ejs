@@ -35,16 +35,44 @@
      <thead style="background-color: cornflowerblue; color: white;">
        <tr>
          <th style="text-align: left;">ID</th>
-         <th style="text-align: left;">AFFILIATIONS</th>
-         <th style="text-align: left;">PLATFORMS</th>
+         <th style="text-align: left;">USES FACEBOOK</th>
+         <th style="text-align: left;">USES TWITTER</th>
+         <th style="text-align: left;">USES INSTAGRAM</th>
+         <th style="text-align: left;">USES YOUTUBE</th>
+         <th style="text-align: left;">USES DISCORD</th>
+         <th style="text-align: left;">USES REDDIT</th>
+         <th style="text-align: left;">USES PINTEREST</th>
+         <th style="text-align: left;">USES SNAPCHAT</th>
+         <th style="text-align: left;">USES TIKTOK</th>
+         <th style="text-align: left;">AFFILIATED WITH: <br> UNIVERSITY</th>
+         <th style="text-align: left;">AFFILIATED WITH: <br> PRIVATE</th>
+         <th style="text-align: left;">AFFILIATED WITH: <br> SCHOOL</th>
+         <th style="text-align: left;">AFFILIATED WITH: <br> COMPANY</th>
+         <th style="text-align: left;">AFFILIATED WITH: <br> GOVERNMENT</th>
+         <th style="text-align: left;">AFFILIATED WITH: <br> NONE</th>
+
+
        </tr>
      </thead>
      <tbody style="font-family: Arial; font-size: 9pt;">
       <% for (let iCount = 0; iCount < db.length; iCount++) { %>
          <tr>
-           <td><%= db[iCount].unique_id %></td>
-           <td><%= db[iCount].affiliation_org %></td>
-           <td><%= db[iCount].social_media_platform %></td>
+           <td><%= db[iCount].id %></td>
+           <td><%= db[iCount].pl_fb %></td>
+           <td><%= db[iCount].pl_tw %></td>
+           <td><%= db[iCount].pl_ig %></td>
+           <td><%= db[iCount].pl_yt %></td>
+           <td><%= db[iCount].pl_dc %></td>
+           <td><%= db[iCount].pl_re %></td>
+           <td><%= db[iCount].pl_pt %></td>
+           <td><%= db[iCount].pl_sc %></td>
+           <td><%= db[iCount].pl_tt %></td>
+           <td><%= db[iCount].ao_uv %></td>
+           <td><%= db[iCount].ao_pr %></td>
+           <td><%= db[iCount].ao_sc %></td>
+           <td><%= db[iCount].ao_co %></td>
+           <td><%= db[iCount].ao_gt %></td>
+           <td><%= db[iCount].ao_na %></td>
            <td style="text-align: center;">
            </td>
          </tr>
