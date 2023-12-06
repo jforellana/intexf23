@@ -12,11 +12,12 @@ app.use(express.static(path.join(__dirname, "public")));
 const knex = require("knex")({
   client: "pg",
   connection: {
-    host: "localhost",
-    user: "postgres",
-    password: "password",
-    database: "mental_health",
-    port: 5432,
+    host: process.env.RDS_HOSTNAME || "localhost",
+    user: process.env.RDS_USERNAME || "postgres",
+    password: process.env.RDS_PASSWORD || "password",
+    database: process.env.RDS_DB_NAME || "mental_health",
+    port: process.env.RDS_PORT || 5432,
+    ssl: process.env.DB_SSL ? {rejectUnauthorized: false} : false
   },
 });
 
@@ -28,7 +29,7 @@ app.get("/", (req, res) => {
 app.get('/database', (req,res) => {
     let pagelimit = req.body.limit || 10;
 
-    let query = knex.select().from('survey2').limit(pagelimit);
+    let query = knex.select().from('survey').limit(pagelimit);
     query.toString();
     query.then(db => {
         res.render('databases/survey', {db:db});
@@ -62,7 +63,7 @@ app.post("/post-survey", (req, res) => {
     const selectedplatforms = req.body.platforms  
 
     knex.transaction(async(trx) => {
-        const [id] = await trx('survey2')
+        const [id] = await trx('survey')
         .insert({
             timestamp: knex.raw('CURRENT_TIMESTAMP'),
             age: req.body.age,
@@ -125,7 +126,7 @@ app.post("/database", (req, res) => {
     if (page < 1) page = 1;
     let offset = (page - 1) * perpage;
 
-    let query = knex.select().from('survey2').limit(perpage).offset(offset);
+    let query = knex.select().from('survey').limit(perpage).offset(offset);
     query.toString();
     query.then(db => {
         res.render('databases/survey', {db:db});
