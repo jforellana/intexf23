@@ -157,8 +157,15 @@
       let enteredUsername = document.getElementById("entuser").value;
       let enteredPassword = document.getElementById("entpass").value;
 
+      //second part to see if the created account can login
+      let users = JSON.parse(localStorage.getItem("users")) || [];
+      let matchedUser = users.find(user => user.name === enteredUsername);
+
 
       if ((enteredUsername == localStorage.getItem("username")) && (enteredPassword == localStorage.getItem("password"))) {
+        window.location.href = "/";
+        localStorage.setItem("loggedin", "True");
+      } else if (matchedUser && matchedUser.password === enteredPassword) {
         window.location.href = "/";
         localStorage.setItem("loggedin", "True");
       } else {
