@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script>
-    if (localStorage.getItem("loggedin")){
-      window.location.replace("login.html");
-    }
-    else {
-      ("#nav-placeholder").load("database.html");
-    }
-  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
@@ -80,5 +72,11 @@
      </tbody>
    </table>
    <br><br>
+   <script>
+    if ((localStorage.getItem("loggedin") != 'True') && (localStorage.getItem("admin") != 'True')){
+      window.location.replace("/login");
+      alert("You do not have the necessary access to view this page. Please contact your administrator if you think this is a mistake.")
+    }
+   </script>
 </body>
 </html>
