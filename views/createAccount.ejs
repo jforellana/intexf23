@@ -136,16 +136,47 @@
 
   <script>
 
+    // function createANewAccount() {
+    //   const users = [{ name: (document.getElementById("entuser").value), password: (document.getElementById("entpass").value) }];
+
+    //   const serializedUsers = JSON.stringify(users);
+
+
+    //   let theUserName = document.getElementById("entuser").value;
+    //   let thePassword = document.getElementById("entpass").value;
+    //   let existingUser = users.find(theUserName => theUserName[0] == theUserName);
+    //   if (existingUser) {
+    //     existingUser[0] += thePassword;
+    //   }
+    //   else {
+    //     users.push([theUserName, thePassword]);
+    //   }
+
+    //   localStorage.set('users', serializedUsers);
+
+
+
+    // }
+
+
     function createANewAccount() {
-      const users = [{ name: (document.getElementById("entuser").value), password: (document.getElementById("entpass").value) }];
+      const users = JSON.parse(localStorage.getItem("users")) || [];
 
-      const serializedUsers = JSON.stringify(users);
+      let theUserName = document.getElementById("entuser").value;
+      let thePassword = document.getElementById("entpass").value;
 
-      localStorage.set('users', serializedUsers);
+      let existingUser = users.find(user => user.name === theUserName);
 
+      if (existingUser) {
+        alert("An account with that username already exists. Please choose a different username.");
+      } else {
+        users.push({ name: theUserName, password: thePassword });
+        localStorage.setItem("users", JSON.stringify(users));
 
-
+        alert("Account created successfully!");
+      }
     }
+
 
   </script>
 </body>

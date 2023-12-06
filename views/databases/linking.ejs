@@ -17,7 +17,7 @@
    <label><b>Mental Health Information</b></label>
    <br><br>
    <div>
-    <form action="/database" method="post">
+    <form action="/links" method="post">
     <label for="limit">rows per page</label>
     <select name="limit" id="limit" required>
         <option value="" disabled selected>- select -</option>
@@ -34,21 +34,17 @@
    <table style="width: 100%; background-color: antiquewhite; border: 1px solid black;">
      <thead style="background-color: cornflowerblue; color: white;">
        <tr>
-         <th style="text-align: left;">timestamp</th>
-         <th style="text-align: left;">age</th>
-         <th style="text-align: left;">gender</th>
-         <th style="text-align: left;">affiliation_id</th>
-         <th style="text-align: left;">platform_no</th>
+         <th style="text-align: left;">ID</th>
+         <th style="text-align: left;">AFFILIATIONS</th>
+         <th style="text-align: left;">PLATFORMS</th>
        </tr>
      </thead>
      <tbody style="font-family: Arial; font-size: 9pt;">
       <% for (let iCount = 0; iCount < db.length; iCount++) { %>
          <tr>
-           <td><%= db[iCount].timestamp %></td>
-           <td><%= db[iCount].age %></td>
-           <td><%= db[iCount].gender %></td>
-           <td><%= db[iCount].affiliation_id %></td>
-           <td><%= db[iCount].platform_no %></td>
+           <td><%= db[iCount].unique_id %></td>
+           <td><%= db[iCount].affiliation_org %></td>
+           <td><%= db[iCount].social_media_platform %></td>
            <td style="text-align: center;">
            </td>
          </tr>
