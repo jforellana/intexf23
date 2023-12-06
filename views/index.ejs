@@ -40,6 +40,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
+                    <li class="nav-item" id="create"><a class="nav-link" href="/createAccount">Create Account</a></li>
                     <li class="nav-item"><a class="nav-link" href="#dashboard">Dashboard</a></li>
                     <li class="nav-item"><a class="nav-link" href="/survey">Survey</a></li>
                     <li class="nav-item"><a class="nav-link" href="/database">Database</a></li>
@@ -228,10 +229,12 @@
         if(localStorage.getItem("loggedin") == 'True'){
             document.getElementById("login").href = "#";
             document.getElementById("login").innerHTML = "Logout";
+            document.getElementById("create").style.visibility = "visible";
         }
         else{
             document.getElementById("login").href = "/login";
             document.getElementById("login").innerHTML = "Login";
+            document.getElementById("create").style.visibility = "hidden";
         }
 
     </script>
