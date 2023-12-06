@@ -35,9 +35,6 @@ app.post("/post-survey", (req, res) => {
     for (const affil of selectedaffiliations){
       for(const plat of selectedplatforms){
         knex("main_db").insert({
-          Date: date.toISOString().split('T')[0] + ' ' + date.toTimeString().split(' ')[0],
-          Age: req.body.age,
-          Gender: req.body.gender,
           Affiliation_No: affil,
           Platform_No: plat
         })
@@ -45,24 +42,18 @@ app.post("/post-survey", (req, res) => {
       
     }
   }
-  else if ((selectedaffiliations.length > 0) && (selectedplatforms.length = 0)){
+  else if ((selectedaffiliations.length > 0) && (selectedplatforms.length == 0)){
     for (const affil of selectedaffiliations){
       knex("main_db").insert({
-        Date: date.toISOString().split('T')[0] + ' ' + date.toTimeString().split(' ')[0],
-        Age: req.body.age,
-        Gender: req.body.gender,
         Affiliation_No: affil,
         Platform_No: selectedplatforms
       })
       
     }
   }
-  else if ((selectedaffiliations.length = 0) && (selectedplatforms.length > 0)){
+  else if ((selectedaffiliations.length == 0) && (selectedplatforms.length > 0)){
     for(const plat of selectedplatforms){
       knex("main_db").insert({
-        Date: date.toISOString().split('T')[0] + ' ' + date.toTimeString().split(' ')[0],
-        Age: req.body.age,
-        Gender: req.body.gender,
         Affiliation_No: selectedaffiliations,
         Platform_No: plat
       })
@@ -70,9 +61,6 @@ app.post("/post-survey", (req, res) => {
   }
   else{
     knex("main_db").insert({
-      Date: date.toISOString().split('T')[0] + ' ' + date.toTimeString().split(' ')[0],
-      Age: req.body.age,
-      Gender: req.body.gender,
       Affiliation_No: selectedaffiliations,
       Platform_No: selectedplatforms
     })
