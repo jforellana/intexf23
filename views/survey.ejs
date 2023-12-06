@@ -64,32 +64,32 @@
                 <form action="/post-survey" method="post">
                     <fieldset class="projects-section">
                         <legend id="personal-info">Personal Information</legend>
-                            <label for="age">Enter your age</label> <input type="number" placeholder="Age" id="age" required>
+                            <label for="age">Enter your age</label> <input type="number" name="age" placeholder="Age" id="age" required>
                             <br><br>
                             <label for="gender">Select your gender</label>
                             <select name="gender" id="gender" required>
                                 <option value="" disabled selected>- select -</option>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                                <option value="nonbinary">Non-Binary</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Non-binary">Non-Binary</option>
                             </select>
                             <br><br>
-                            <label for="relstatus">Select your relationship status</label>
-                            <select name="relstatus" id="relstatus" required>
+                            <label for="rel_status">Select your relationship status</label>
+                            <select name="rel_status" id="rel_status" required>
                                 <option value="" disabled selected>- select -</option>
-                                <option value="single">Single</option>
-                                <option value="married">Married</option>
-                                <option value="relationship">In a relationship</option>
-                                <option value="divorced">Divorced</option>
+                                <option value="Single">Single</option>
+                                <option value="Married">Married</option>
+                                <option value="In a relationship">In a relationship</option>
+                                <option value="Divorced">Divorced</option>
                             </select>
                             <br><br>
-                            <label for="occupation">Select your current occupation</label>
-                            <select name="occupation" id="occupation" required>
+                            <label for="occ_status">Select your current occupation</label>
+                            <select name="occ_status" id="occ_status" required>
                                 <option value="" disabled selected>- select -</option>
-                                <option value="school">School Student</option>
-                                <option value="university">University Student</option>
-                                <option value="salaried">Salaried Worker</option>
-                                <option value="retired">Retired</option>
+                                <option value="School Student">School Student</option>
+                                <option value="University Student">University Student</option>
+                                <option value="Salaried Worker">Salaried Worker</option>
+                                <option value="Retired">Retired</option>
                             </select>
                             <br><br>
                             <fieldset style="display: inline-block;">
@@ -109,19 +109,19 @@
                             <br><br>
                             <label for="location">Select your location</label>
                             <select name="location" id="location" required>
-                                <option value="provo" selected>Provo</option>
-                                <option value="plainsville">Plainsville</option>
+                                <option value="Provo" selected>Provo</option>
+                                <option value="Plainsville">Plainsville</option>
                             </select>
                         <br><br>
                         <a class="btn btn-primary" href="#socials">Next</a>
                     </fieldset>
                     <fieldset class="projects-section">
                         <legend id="socials">Social Media Preferences</legend>
-                        <label for="usage">Do you use Social Media?</label>
-                        <select name="usage" id="usage" required>
+                        <label for="social_media_usage">Do you use Social Media?</label>
+                        <select name="social_media_usage" id="social_media_usage" required>
                             <option value="" disabled selected>- select -</option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
                         </select>
                         <br><br>
                         <!--Facebook, Twitter, Instagram, YouTube, Discord, Reddit, Pinterest, Snapchat, TikTok-->
@@ -147,15 +147,15 @@
                             <input class="mx-1" type="checkbox" id="tiktok" name="platforms" value="9"><label for="tiktok">TikTok</label>
                         </fieldset>
                         <br><br>
-                        <label for="timespent">What is the average time you spend on Social Media every day?</label>
-                        <select name="timespent" id="timespent" required>
+                        <label for="avg_time_social">What is the average time you spend on Social Media every day?</label>
+                        <select name="avg_time_social" id="avg_time_social" required>
                             <option value="" disabled selected>- select -</option>
-                            <option value="lessthan1">Less than an hour</option>
-                            <option value="1and2">Between 1 and 2 hours</option>
-                            <option value="2and3">Between 2 and 3 hours</option>
-                            <option value="3and4">Between 3 and 4 hours</option>
-                            <option value="4and5">Between 4 and 5 hours</option>
-                            <option value="over5">More than 5 hours</option>
+                            <option value="Less than an hour">Less than an hour</option>
+                            <option value="Between 1 and 2 hours">Between 1 and 2 hours</option>
+                            <option value="Between 2 and 3 hours">Between 2 and 3 hours</option>
+                            <option value="Between 3 and 4 hours">Between 3 and 4 hours</option>
+                            <option value="Between 4 and 5 hours">Between 4 and 5 hours</option>
+                            <option value="More than 5 hours">More than 5 hours</option>
                         </select>
                         <br><br>
                         <a class="btn btn-primary" href="#personal-info">Back</a>
@@ -169,68 +169,79 @@
                         </p>
                         <label for="q1">1. How often do you find yourself using social media without a specific
                             purpose?</label><br>
-                        <input class="my-1" type="range" id="q1" value="1" step="1" min="1" max="5"
+                        <label id="amount1"></label>
+                        <input type="range" name="q1" id="q1" value="1" step="1" min="1" max="5"
                             onchange="showValue(1, this.value);" required>
                         <label id="amount1"></label>
                         <br>
                         <label for="q2">2. How often do you get distracted by social media when you are busy doing
                             something?</label> <br>
-                        <input class="my-1" type="range" id="q2" value="1" step="1" min="1" max="5"
+                        <label id="amount2"></label>
+                        <input type="range" name="q2" id="q2" value="1" step="1" min="1" max="5"
                             onchange="showValue(2, this.value);" required>
                         <label id="amount2"></label>
                         <br>
                         <label for="q3">3. Do you feel restless if you haven’t used social media in a while?</label><br>
-                        <input class="my-1" type="range" id="q3" value="1" step="1" min="1" max="5"
+                        <label id="amount3"></label>
+                        <input type="range" name="q3" id="q3" value="1" step="1" min="1" max="5"
                             onchange="showValue(3, this.value);" required>
                         <label id="amount3"></label>
                         <br>
                         <label for="q4">4. How easily distracted are you?</label> <br>
-                        <input class="my-1" type="range" id="q4" value="1" step="1" min="1" max="5"
+                        <label id="amount4"></label>
+                        <input type="range" name="q4" id="q4" value="1" step="1" min="1" max="5"
                             onchange="showValue(4, this.value);" required>
                         <label id="amount4"></label>
                         <br>
                         <label for="q5">5. How much are you bothered by worries?</label> <br>
-                        <input class="my-1" type="range" id="q5" value="1" step="1" min="1" max="5"
+                        <label id="amount5"></label>
+                        <input type="range" name="q5" id="q5" value="1" step="1" min="1" max="5"
                             onchange="showValue(5, this.value);" required>
                         <label id="amount5"></label>
                         <br>
                         <label for="q6">6. Do you find it difficult to concentrate on things?</label> <br>
-                        <input class="my-1" type="range" id="q6" value="1" step="1" min="1" max="5"
+                        <label id="amount6"></label>
+                        <input type="range" name="q6" id="q6" value="1" step="1" min="1" max="5"
                             onchange="showValue(6, this.value);" required>
                         <label id="amount6"></label>
                         <br>
                         <label for="q7">7. How often do you compare yourself to other successful people through the use
                             of social media?</label><br>
-                        <input class="my-1" type="range" id="q7" value="1" step="1" min="1" max="5"
+                        <label id="amount7"></label>
+                        <input type="range" name="q7" id="q7" value="1" step="1" min="1" max="5"
                             onchange="showValue(7, this.value);" required>
                         <label id="amount7"></label>
                         <br>
                         <label for="q8">8. Following the previous question, how do you feel about these comparisons,
                             generally speaking? (1 being poor, 5 being great)</label> <br>
-                        <input class="my-1" type="range" id="q8" value="1" step="1" min="1" max="5"
+                        <label id="amount8"></label>
+                        <input type="range" name="q8" id="q8" value="1" step="1" min="1" max="5"
                             onchange="showValue(8, this.value);" required>
                         <label id="amount8"></label>
                         <br>
                         <label for="q9">9. How often do you look to seek validation from features of social
                             media?</label> <br>
-                        <input class="my-1" type="range" id="q9" value="1" step="1" min="1" max="5"
+                        <label id="amount9"></label>
+                        <input type="range" name="q9" id="q9" value="1" step="1" min="1" max="5"
                             onchange="showValue(9, this.value);" required>
                             <label id="amount9"></label>
                         <br>
                         <label for="q10">10. How often do you feel depressed or down?</label><br>
-                        <input class="my-1" type="range" id="q10" value="1" step="1" min="1" max="5"
+                        <label id="amount10"></label>
+                        <input type="range" name="q10" id="q10" value="1" step="1" min="1" max="5"
                             onchange="showValue(10, this.value);" required>
                         <label id="amount10"></label>
                         <br>
                         <label for="q11">11. How frequently does your interest in daily activities
                             fluctuate?</label><br>
-                        <input class="my-1" type="range" id="q11" value="1" step="1" min="1" max="5"
+                        <label id="amount11"></label>
+                        <input type="range" name="q11" id="q11" value="1" step="1" min="1" max="5"
                             onchange="showValue(11, this.value);" required>
                         <label id="amount11"></label>
                         <br>
                         <label for="q12">12. How often do you face issues regarding sleep?</label><br>
-                        
-                        <input class="my-1" type="range" id="q12" value="1" step="1" min="1" max="5"
+                        <label id="amount12"></label>
+                        <input type="range" name="q12" id="q12" value="1" step="1" min="1" max="5"
                             onchange="showValue(12, this.value);" required>
                         <label id="amount12"></label>
                         <br><br>

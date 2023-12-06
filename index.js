@@ -1,9 +1,7 @@
+const { count } = require("console");
 const express = require("express");
-
 let app = express();
-
 let path = require("path");
-
 const port = process.env.PORT || 3000;
 
 app.set("view engine", "ejs");
@@ -26,103 +24,198 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.post("/post-survey", (req, res) => {
-  let date = new Date();
-  const selectedaffiliations = req.body.affiliation
-  const selectedplatforms = req.body.platforms
 
-  if ((selectedaffiliations.length > 0) && (selectedplatforms.length > 0)){
-    for (const affil of selectedaffiliations){
-      for(const plat of selectedplatforms){
-        knex("main_db").insert({
-          Affiliation_No: affil,
-          Platform_No: plat
-        })
-      }
-      
-    }
-  }
-  else if ((selectedaffiliations.length > 0) && (selectedplatforms.length == 0)){
-    for (const affil of selectedaffiliations){
-      knex("main_db").insert({
-        Affiliation_No: affil,
-        Platform_No: selectedplatforms
-      })
-      
-    }
-  }
-  else if ((selectedaffiliations.length == 0) && (selectedplatforms.length > 0)){
-    for(const plat of selectedplatforms){
-      knex("main_db").insert({
-        Affiliation_No: selectedaffiliations,
-        Platform_No: plat
-      })
-    }
-  }
-  else{
-    knex("main_db").insert({
-      Affiliation_No: selectedaffiliations,
-      Platform_No: selectedplatforms
+app.get('/database', (req,res) => {
+    let pagelimit = req.body.limit || 10;
+
+    let query = knex.select().from('survey2').limit(pagelimit);
+    query.toString();
+    query.then(db => {
+        res.render('databases/survey', {db:db});
     })
-  }
-  
-
-  knex("survey_db").insert({
-      Date: date.toISOString().split('T')[0] + ' ' + date.toTimeString().split(' ')[0],
-      Age: req.body.age,
-      Gender: req.body.gender,
-      Rel_Status: req.body.relstatus,
-      Occ_Status: req.body.occupation,
-      Use_SM: req.body.usage,
-      Time_Per_Day: req.body.timespent,
-      No_Purpose_Use: req.body.q1,
-      Distracted: req.body.q2,
-      Restless: req.body.q3,
-      Easily_Distracted: req.body.q4,
-      Bothered_By_Worries: req.body.q5,
-      Concentrate_Difficulty: req.body.q6,
-      Comparison: req.body.q7,
-      Comparison_Feeling: req.body.q8,
-      Seek_Validation: req.body.q9,
-      Depressed_Freq: req.body.q10,
-      Interest_Fluctuation: req.body.q11,
-      Sleep_Issues: req.body.q12,
-    })
-    .then((mydata) => {
-      res.redirect("/");
-    });
-});
-
-app.get("/database", (req, res) => {
-  let pagelimit = req.body.limit || 7;
-
-  let query = knex.select().from("main_db").limit(pagelimit);
-  query.toString();
-  query.then((db) => {
-    res.render("database", { db: db });
-  });
-});
-
-app.post("/database", (req, res) => {
-  let perpage = req.body.limit || 5;
-  let page = req.body.page || 1;
-  if (page < 1) page = 1;
-  let offset = (page - 1) * perpage;
-
-  let query = knex.select().from("main_db").limit(perpage).offset(offset);
-  query.toString();
-  query.then((db) => {
-    res.render("database", { db: db });
-  });
 });
 
 app.get("/survey", (req, res) => {
   res.render("survey");
 });
 
+app.get('/links', async (req, res) => {
+    let pagelimit = req.body.limit || 10;
+    let query = knex.select().from('pk')
+    .innerJoin('affiliation', 'pk.affiliation_id', 'affiliation.affiliation_id')
+    .innerJoin('platform', 'pk.platform_id', 'platform.platform_no')
+    .orderBy('pk.unique_id').limit(pagelimit);
+    query.toString();
+
+    query.then(db => {
+        res.render('databases/linking', {db:db});
+    })
+})
+
 app.get("/login", (req, res) => {
   res.render("login");
 });
+
+// app.post("/post-survey", (req, res) => {
+//     knex.transaction(async(trx) => {
+
+//         const [id] = await trx('survey2')
+//         .insert({
+//             timestamp: knex.raw('CURRENT_TIMESTAMP'),
+//             age: req.body.age,
+//             gender: req.body.gender,
+//             rel_status: req.body.rel_status,
+//             occ_status: req.body.occ_status,
+//             location: req.body.location,
+//             social_media_usage: req.body.social_media_usage,
+//             avg_time_social: req.body.avg_time_social,
+//             use_no_purpose: req.body.q1,
+//             distracted_social: req.body.q2,
+//             restless_no_media: req.body.q3,
+//             distracted_general: req.body.q4,
+//             bothered_worries: req.body.q5,
+//             difficult_concentrated: req.body.q6,
+//             compare_successful: req.body.q7,
+//             feeling_comparison: req.body.q8,
+//             validation_social: req.body.q9,
+//             depressed_down: req.body.q10,
+//             fluctuate_interests: req.body.q11,
+//             sleep_issues: req.body.q12
+//             })
+//         .returning('unique_id');
+
+//         const newid = id.unique_id;
+
+//         await trx('pk')
+//         .insert({
+//             unique_id: newid,
+//             affiliation_id: req.body.affiliation,
+//             platform_id: req.body.platforms
+//         })
+//         .then(mydata => {
+//             res.redirect("/");
+//         })
+//         .catch((error) => {
+//             console.error('Transaction error:', error);
+//         })
+//         .finally (() => {
+//             knex.destroy();
+//         })
+//     })
+// });
+
+app.post("/post-survey", (req, res) => {
+    const selectedaffiliations = req.body.affiliation
+    const selectedplatforms = req.body.platforms  
+
+    knex.transaction(async(trx) => {
+        const [id] = await trx('survey2')
+        .insert({
+            timestamp: knex.raw('CURRENT_TIMESTAMP'),
+            age: req.body.age,
+            gender: req.body.gender,
+            rel_status: req.body.rel_status,
+            occ_status: req.body.occ_status,
+            location: req.body.location,
+            social_media_usage: req.body.social_media_usage,
+            avg_time_social: req.body.avg_time_social,
+            use_no_purpose: req.body.q1,
+            distracted_social: req.body.q2,
+            restless_no_media: req.body.q3,
+            distracted_general: req.body.q4,
+            bothered_worries: req.body.q5,
+            difficult_concentrated: req.body.q6,
+            compare_successful: req.body.q7,
+            feeling_comparison: req.body.q8,
+            validation_social: req.body.q9,
+            depressed_down: req.body.q10,
+            fluctuate_interests: req.body.q11,
+            sleep_issues: req.body.q12
+        })
+        .returning('unique_id');
+        const newid = id.unique_id;
+
+        await trx('pk')
+        // if ((selectedaffiliations.length > 0) && (selectedplatforms.length > 0)){
+        //     for (const affil of selectedaffiliations){
+        //     for(const plat of selectedplatforms){
+        //         knex("pk").insert({
+        //         Affiliation_No: affil,
+        //         Platform_No: plat
+        //         })
+        //     }}
+        // }
+        // else if ((selectedaffiliations.length > 0) && (selectedplatforms.length == 0)){
+        //     for (const affil of selectedaffiliations){
+        //     knex("pk").insert({
+        //         Affiliation_No: affil,
+        //         Platform_No: selectedplatforms
+        //     })
+            
+        //     }
+        // }
+        // else if ((selectedaffiliations.length == 0) && (selectedplatforms.length > 0)){
+        //     for(const plat of selectedplatforms){
+        //     knex("pk").insert({
+        //         Affiliation_No: selectedaffiliations,
+        //         Platform_No: plat
+        //     })
+        //     }
+        // }
+        // else{
+        //     knex("pk").insert({
+        //     Affiliation_No: selectedaffiliations,
+        //     Platform_No: selectedplatforms
+        //     })
+        // }
+
+
+        .insert({
+            unique_id: newid,
+            // affiliation_id: req.body.affiliation,
+            // platform_id: req.body.platforms
+        })
+        .then(mydata => {
+            res.redirect("/");
+        })
+        .catch((error) => {
+            console.error('Transaction error:', error);
+        })
+        .finally (() => {
+            knex.destroy();
+        })
+    })
+});
+
+app.post("/database", (req, res) => {
+    let perpage = req.body.limit || 5;
+    let page = req.body.page || 1;
+    if (page < 1) page = 1;
+    let offset = (page - 1) * perpage;
+
+    let query = knex.select().from('survey2').limit(perpage).offset(offset);
+    query.toString();
+    query.then(db => {
+        res.render('databases/survey', {db:db});
+    })
+})
+
+app.post('/links', (req, res) => {
+    let perpage = req.body.limit || 5;
+    let page = req.body.page || 1;
+    if (page < 1) page = 1;
+    let offset = (page - 1) * perpage;
+
+    let query = knex.select().from('pk')
+    .innerJoin('affiliation', 'pk.affiliation_id', 'affiliation.affiliation_id')
+    .innerJoin('platform', 'pk.platform_id', 'platform.platform_no')
+    .orderBy('pk.unique_id').limit(perpage).offset(offset);
+    query.toString();
+
+    query.then(db => {
+        res.render('databases/linking', {db:db});
+    })
+})
 
 app.get("/createAccount", (req, res) => {
   res.render("createAccount");
