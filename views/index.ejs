@@ -4,7 +4,7 @@
 
 <head>
     <script>
-        function logout(){
+        function logout() {
             localStorage.setItem("loggedin", 'False');
             location.reload()
         }
@@ -24,7 +24,7 @@
         rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link rel="stylesheet" href="css/styles.css">
-    
+
 </head>
 
 <body id="page-top">
@@ -55,7 +55,7 @@
             <div class="d-flex justify-content-center">
                 <div class="text-center">
                     <h1 class="mx-auto my-0 text-uppercase">Social Media</h1>
-                    <h3 class="text-white mx-auto my-4 text-uppercase">and</h3> 
+                    <h3 class="text-white mx-auto my-4 text-uppercase">and</h3>
                     <h1 class="mx-auto my-0 text-uppercase">Mental Health</h1>
                     <h2 class="text-white-50 mx-auto mt-2 mb-5">Studying the effects social media use has on mental
                         health here in Provo. </h2>
@@ -89,12 +89,14 @@
         <div class="container px-4 px-lg-5">
             <!-- Featured Project Row-->
             <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
-                <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="assets/img/bg-masthead.jpg" alt="..." /></div>
+                <!-- <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="assets/img/bg-masthead.jpg" alt="..." /></div> -->
+                <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="assets/img/GroupPhoto.jpg"
+                        alt="..." /></div>
                 <div class="col-xl-4 col-lg-5">
                     <div class="featured-text text-center text-lg-left">
                         <h4>Since 2023</h4>
                         <p class="text-black-50 mb-0">Our team of researchers has been working to raise
-                            awareness for mental health issues specifically related to social media use</p>
+                            awareness for mental health issues, specifically related to social media use</p>
                     </div>
                 </div>
             </div>
@@ -145,8 +147,10 @@
         <div class="container px-4 px-lg-5">
             <div class="social d-flex justify-content-center">
                 <a class="mx-2" href="https://www.x.com/provocity" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a class="mx-2" href="https://www.facebook.com/provocity" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a class="mx-2" href="https://www.instagram.com/provocity" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a class="mx-2" href="https://www.facebook.com/provocity" target="_blank"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a class="mx-2" href="https://www.instagram.com/provocity" target="_blank"><i
+                        class="fab fa-instagram"></i></a>
             </div>
         </div>
     </section>
@@ -161,12 +165,12 @@
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 
     <script>
-        if(localStorage.getItem("loggedin") == 'True'){
+        if (localStorage.getItem("loggedin") == 'True') {
             document.getElementById("login").href = "#";
             document.getElementById("login").innerHTML = "Logout";
             document.getElementById("create").style.visibility = "visible";
         }
-        else{
+        else {
             document.getElementById("login").href = "/login";
             document.getElementById("login").innerHTML = "Login";
             document.getElementById("create").style.visibility = "hidden";
