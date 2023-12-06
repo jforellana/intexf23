@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 <body>
-   <label><b>Mental Health Information</b></label>
-   <br><br>
-   <div>
+  <label><b>Mental Health Information</b></label>
+  <br><br>
+  <div>
     <form action="/database" method="post">
     <label for="limit">rows per page</label>
     <select name="limit" id="limit" required>
@@ -24,62 +24,68 @@
     </form>
     <br><br>
 </div>
-   <table style="width: 100%; background-color: antiquewhite; border: 1px solid black;">
-     <thead style="background-color: cornflowerblue; color: white;">
-       <tr>
-         <th style="text-align: left;">ID</th>
-         <th style="text-align: left;">TIMESTAMP</th>
-         <th style="text-align: left;">AGE</th>
-         <th style="text-align: left;">GENDER</th>
-         <th style="text-align: left;">RELATIONSHIP STATUS</th>
-         <th style="text-align: left;">OCCUPATION STATUS</th>
-         <th style="text-align: left;">LOCATION</th>
-         <th style="text-align: left;">DO YOU USE SOCIAL MEDIA</th>
-         <th style="text-align: left;">HOW MUCH TIME DO YOU SPEND ON SOCIAL MEDIA PER DAY ON AVERAGE</th>
-         <th style="text-align: left;">HOW OFTEN DO YOU USE SOCIAL MEDIA WITH NO PURPOSE</th>
-         <th style="text-align: left;">HOW OFTEN DO YOU GET DISTRACTED BY SOCIAL MEDIA</th>
-         <th style="text-align: left;">DO YOU FEEL RESTLESS IF YOU HAVEN'T USED SOCIAL MEDIA IN A WHILE</th>
-         <th style="text-align: left;">HOW EASILY DISTRACTED ARE YOU</th>
-         <th style="text-align: left;">HOW MUCH ARE YOU BOTHERED BY WORRIES</th>  
-         <th style="text-align: left;">DO YOU FIND IT DIFFICULT TO CONCENTRATE ON THINGS</th>
-         <th style="text-align: left;">HOW OFTEN DO YOU COMPARE YOURSELF TO OTHERS IN SOCIAL MEDIA</th>
-         <th style="text-align: left;">FOLLOWING THE PREVIOUS QUESTIONS, HOW DO YOU FEEL ABOUT THESE COMPARISONS</th>
-         <th style="text-align: left;">HOW OFTEN DO YOU LOOK TO SEEK VALIDATION FROM FEATURES OF SOCIAL MEDIA</th>
-         <th style="text-align: left;">HOW OFTEN DO YOU FEEL DEPRESSED OR DOWN</th>
-         <th style="text-align: left;">HOW FREQUENTLY DOES YOU INTEREST IN DAILY ACTIVITIES FLUCTUATE?</th>
-         <th style="text-align: left;">HOW OFTEN DO YOU FACE ISSUES REGARDING SLEEP</th>
-       </tr>
-     </thead>
-     <tbody style="font-family: Arial; font-size: 9pt;">
+  <table style="width: 100%; background-color: antiquewhite; border: 1px solid black;">
+    <thead style="background-color: cornflowerblue; color: white;">
+      <tr>
+        <th style="text-align: left;">ID</th>
+        <th style="text-align: left;">TIMESTAMP</th>
+        <th style="text-align: left;">AGE</th>
+        <th style="text-align: left;">GENDER</th>
+        <th style="text-align: left;">RELATIONSHIP STATUS</th>
+        <th style="text-align: left;">OCCUPATION STATUS</th>
+        <th style="text-align: left;">LOCATION</th>
+        <th style="text-align: left;">DO YOU USE SOCIAL MEDIA</th>
+        <th style="text-align: left;">HOW MUCH TIME DO YOU SPEND ON SOCIAL MEDIA PER DAY ON AVERAGE</th>
+        <th style="text-align: left;">HOW OFTEN DO YOU USE SOCIAL MEDIA WITH NO PURPOSE</th>
+        <th style="text-align: left;">HOW OFTEN DO YOU GET DISTRACTED BY SOCIAL MEDIA</th>
+        <th style="text-align: left;">DO YOU FEEL RESTLESS IF YOU HAVEN'T USED SOCIAL MEDIA IN A WHILE</th>
+        <th style="text-align: left;">HOW EASILY DISTRACTED ARE YOU</th>
+        <th style="text-align: left;">HOW MUCH ARE YOU BOTHERED BY WORRIES</th>  
+        <th style="text-align: left;">DO YOU FIND IT DIFFICULT TO CONCENTRATE ON THINGS</th>
+        <th style="text-align: left;">HOW OFTEN DO YOU COMPARE YOURSELF TO OTHERS IN SOCIAL MEDIA</th>
+        <th style="text-align: left;">FOLLOWING THE PREVIOUS QUESTIONS, HOW DO YOU FEEL ABOUT THESE COMPARISONS</th>
+        <th style="text-align: left;">HOW OFTEN DO YOU LOOK TO SEEK VALIDATION FROM FEATURES OF SOCIAL MEDIA</th>
+        <th style="text-align: left;">HOW OFTEN DO YOU FEEL DEPRESSED OR DOWN</th>
+        <th style="text-align: left;">HOW FREQUENTLY DOES YOU INTEREST IN DAILY ACTIVITIES FLUCTUATE?</th>
+        <th style="text-align: left;">HOW OFTEN DO YOU FACE ISSUES REGARDING SLEEP</th>
+      </tr>
+    </thead>
+    <tbody style="font-family: Arial; font-size: 9pt;">
       <% for (let iCount = 0; iCount < db.length; iCount++) { %>
-         <tr>
-           <td><%= db[iCount].unique_id %></td>
-           <td><%= db[iCount].timestamp %></td>
-           <td><%= db[iCount].age %></td>
-           <td><%= db[iCount].gender %></td>
-           <td><%= db[iCount].rel_status %></td>
-           <td><%= db[iCount].occ_status %></td>
-           <td><%= db[iCount].location %></td>
-           <td><%= db[iCount].social_media_usage %></td>
-           <td><%= db[iCount].avg_time_social %></td>
-           <td><%= db[iCount].use_no_purpose %></td>
-           <td><%= db[iCount].distracted_social %></td>
-           <td><%= db[iCount].restless_no_media %></td>
-           <td><%= db[iCount].distracted_general %></td>
-           <td><%= db[iCount].bothered_worries %></td>
-           <td><%= db[iCount].difficult_concentrated %></td>
-           <td><%= db[iCount].compare_successful %></td>
-           <td><%= db[iCount].feeling_comparison %></td>
-           <td><%= db[iCount].validation_social %></td>
-           <td><%= db[iCount].depressed_down %></td>
-           <td><%= db[iCount].fluctuate_interests %></td>
-           <td><%= db[iCount].sleep_issues %></td>
-           <td style="text-align: center;">
-           </td>
-         </tr>
+        <tr>
+          <td><%= db[iCount].unique_id %></td>
+          <td><%= db[iCount].timestamp %></td>
+          <td><%= db[iCount].age %></td>
+          <td><%= db[iCount].gender %></td>
+          <td><%= db[iCount].rel_status %></td>
+          <td><%= db[iCount].occ_status %></td>
+          <td><%= db[iCount].location %></td>
+          <td><%= db[iCount].social_media_usage %></td>
+          <td><%= db[iCount].avg_time_social %></td>
+          <td><%= db[iCount].use_no_purpose %></td>
+          <td><%= db[iCount].distracted_social %></td>
+          <td><%= db[iCount].restless_no_media %></td>
+          <td><%= db[iCount].distracted_general %></td>
+          <td><%= db[iCount].bothered_worries %></td>
+          <td><%= db[iCount].difficult_concentrated %></td>
+          <td><%= db[iCount].compare_successful %></td>
+          <td><%= db[iCount].feeling_comparison %></td>
+          <td><%= db[iCount].validation_social %></td>
+          <td><%= db[iCount].depressed_down %></td>
+          <td><%= db[iCount].fluctuate_interests %></td>
+          <td><%= db[iCount].sleep_issues %></td>
+          <td style="text-align: center;">
+          </td>
+        </tr>
       <% } %>
-     </tbody>
-   </table>
-   <br><br>
+    </tbody>
+  </table>
+  <br><br>
+  <script>
+    if ((localStorage.getItem("loggedin") != 'True') && (localStorage.getItem("admin") != 'True')){
+      window.location.replace("/login");
+      alert("You do not have the necessary access to view this page. Please contact your administrator if you think this is a mistake.")
+    }
+  </script>
 </body>
 </html>

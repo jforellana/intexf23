@@ -3,11 +3,12 @@
 
 <head>
     <script>
-        function logout(){
+        function logout() {
             localStorage.setItem("loggedin", 'False');
-            location.reload();
+            window.location.replace("/");
         }
     </script>
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
@@ -18,7 +19,9 @@
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -39,7 +42,10 @@
                     <li class="nav-item"><a class="nav-link" href="/#dashboard">Dashboard</a></li>
                     <li class="nav-item"><a class="nav-link" href="/survey">Survey</a></li>
                     <li class="nav-item"><a class="nav-link" href="/database">Database</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/#bagongkwan">More</a></li>
                     <li class="nav-item" onclick="logout()"><a class="nav-link" href="/login" id="login">Login</a></li>
+                    <li class="nav-item" id="modify"><a class="nav-link" href="/modify"><i class="fas fa-user"></i></a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -50,7 +56,8 @@
             <div class="d-flex justify-content-center">
                 <div class="text-center">
                     <h1 class="mx-auto my-0 text-uppercase">Take Our Survey</h1>
-                    <h2 class="text-white-50 mx-auto mt-2 mb-5">Help us raise awareness for mental health issues by taking our 5 minute survey</h2>
+                    <h2 class="text-white-50 mx-auto mt-2 mb-5">Help us raise awareness for mental health issues by
+                        taking our 5 minute survey</h2>
                     <a class="btn btn-primary" href="#personal-info">Take Survey</a>
                 </div>
             </div>
@@ -64,116 +71,117 @@
                 <form action="/post-survey" method="post">
                     <fieldset class="projects-section">
                         <legend id="personal-info">Personal Information</legend>
-                            <label for="age">Enter your age</label> <input type="number" name="age" placeholder="Age" id="age" required>
-                            <br><br>
-                            <label for="gender">Select your gender</label>
-                            <select name="gender" id="gender" required>
-                                <option value="" disabled selected>- select -</option>
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                                <option value="Non-binary">Non-Binary</option>
-                            </select>
-                            <br><br>
-                            <label for="rel_status">Select your relationship status</label>
-                            <select name="rel_status" id="rel_status" required>
-                                <option value="" disabled selected>- select -</option>
-                                <option value="Single">Single</option>
-                                <option value="Married">Married</option>
-                                <option value="In a relationship">In a relationship</option>
-                                <option value="Divorced">Divorced</option>
-                            </select>
-                            <br><br>
-                            <label for="occ_status">Select your current occupation</label>
-                            <select name="occ_status" id="occ_status" required>
-                                <option value="" disabled selected>- select -</option>
-                                <option value="School Student">School Student</option>
-                                <option value="University Student">University Student</option>
-                                <option value="Salaried Worker">Salaried Worker</option>
-                                <option value="Retired">Retired</option>
-                            </select>
-                            <br><br>
-                            <legend>Check all Organizations you are affiliated with: </legend>
-                            <table>
-                                <tr>
-                                    <td>
-                                        <label for="school">School</label>
-                                    </td>
-                                    <td>
-                                        <select name="a_school" id="school">
+                        <label for="age">Enter your age</label> <input type="number" name="age" placeholder="Age"
+                            id="age" required>
+                        <br><br>
+                        <label for="gender">Select your gender</label>
+                        <select name="gender" id="gender" required>
+                            <option value="" disabled selected>- select -</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Non-binary">Non-Binary</option>
+                        </select>
+                        <br><br>
+                        <label for="rel_status">Select your relationship status</label>
+                        <select name="rel_status" id="rel_status" required>
+                            <option value="" disabled selected>- select -</option>
+                            <option value="Single">Single</option>
+                            <option value="Married">Married</option>
+                            <option value="In a relationship">In a relationship</option>
+                            <option value="Divorced">Divorced</option>
+                        </select>
+                        <br><br>
+                        <label for="occ_status">Select your current occupation</label>
+                        <select name="occ_status" id="occ_status" required>
+                            <option value="" disabled selected>- select -</option>
+                            <option value="School Student">School Student</option>
+                            <option value="University Student">University Student</option>
+                            <option value="Salaried Worker">Salaried Worker</option>
+                            <option value="Retired">Retired</option>
+                        </select>
+                        <br><br>
+                        <legend>Check all Organizations you are affiliated with: </legend>
+                        <table>
+                            <tr>
+                                <td>
+                                    <label for="school">School</label>
+                                </td>
+                                <td>
+                                    <select name="a_school" id="school">
                                         <option value="" disabled selected>- select -</option>
                                         <option value="1">yes</option>
                                         <option value="0">no</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <label for="university">University</label>
-                                    </td>
-                                    <td>
-                                        <select name="a_university" id="university">
-                                            <option value="" disabled selected>- select -</option>
-                                            <option value="1">yes</option>
-                                            <option value="0">no</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <label for="private">Private</label>
-                                    </td>
-                                    <td>
-                                        <select name="a_private" id="private">
-                                            <option value="" disabled selected>- select -</option>
-                                            <option value="1">yes</option>
-                                            <option value="0">no</option>
-                                        </select>
-                                    </td>
-                                </tr>      
-                                <tr>
-                                    <td>
-                                        <label for="government">Government</label>
-                                    </td>
-                                    <td>
-                                        <select name="a_government" id="government">
-                                            <option value="" disabled selected>- select -</option>
-                                            <option value="1">yes</option>
-                                            <option value="0">no</option>
-                                        </select>
-                                    </td>
-                                </tr>                          
-                                <tr>
-                                    <td>
-                                        <label for="company">Company</label>
-                                    </td>
-                                    <td>
-                                        <select name="a_company" id="company">
-                                            <option value="" disabled selected>- select -</option>
-                                            <option value="1">yes</option>
-                                            <option value="0">no</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <label for="null">None</label>
-                                    </td>
-                                    <td>
-                                        <select name="a_null" id="null">
-                                            <option value="" disabled selected>- select -</option>
-                                            <option value="1">yes</option>
-                                            <option value="0">no</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                            </table>
-                            <br>
-                            <label for="location">Select your location</label>
-                            <select name="location" id="location" required>
-                                <option value="Provo" selected>Provo</option>
-                                <option value="Plainsville">Plainsville</option>
-                            </select>
-                            <br><br>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="university">University</label>
+                                </td>
+                                <td>
+                                    <select name="a_university" id="university">
+                                        <option value="" disabled selected>- select -</option>
+                                        <option value="1">yes</option>
+                                        <option value="0">no</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="private">Private</label>
+                                </td>
+                                <td>
+                                    <select name="a_private" id="private">
+                                        <option value="" disabled selected>- select -</option>
+                                        <option value="1">yes</option>
+                                        <option value="0">no</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="government">Government</label>
+                                </td>
+                                <td>
+                                    <select name="a_government" id="government">
+                                        <option value="" disabled selected>- select -</option>
+                                        <option value="1">yes</option>
+                                        <option value="0">no</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="company">Company</label>
+                                </td>
+                                <td>
+                                    <select name="a_company" id="company">
+                                        <option value="" disabled selected>- select -</option>
+                                        <option value="1">yes</option>
+                                        <option value="0">no</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="null">None</label>
+                                </td>
+                                <td>
+                                    <select name="a_null" id="null">
+                                        <option value="" disabled selected>- select -</option>
+                                        <option value="1">yes</option>
+                                        <option value="0">no</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                        <br>
+                        <label for="location">Select your location</label>
+                        <select name="location" id="location" required>
+                            <option value="Provo" selected>Provo</option>
+                            <option value="Plainsville">Plainsville</option>
+                        </select>
+                        <br><br>
                         <a class="btn btn-primary" href="#socials">Next</a>
                     </fieldset>
                     <fieldset class="projects-section">
@@ -200,7 +208,7 @@
                                         <option value="0">no</option>
                                     </select>
                                 </td>
-                            </tr>                            
+                            </tr>
                             <tr>
                                 <td>
                                     <label for="twitter">Twitter</label>
@@ -273,7 +281,7 @@
                                     </select>
                                 </td>
                             </tr>
-                            
+
                             <tr>
                                 <td>
                                     <label for="snapchat">Snapchat</label>
@@ -300,7 +308,8 @@
                             </tr>
                         </table>
                         <br><br>
-                        <label for="avg_time_social">What is the average time you spend on Social Media every day?</label>
+                        <label for="avg_time_social">What is the average time you spend on Social Media every
+                            day?</label>
                         <select name="avg_time_social" id="avg_time_social" required>
                             <option value="" disabled selected>- select -</option>
                             <option value="Less than an hour">Less than an hour</option>
@@ -377,7 +386,7 @@
                         <label id="amount9"></label>
                         <input type="range" name="q9" id="q9" value="1" step="1" min="1" max="5"
                             onchange="showValue(9, this.value);" required>
-                            <label id="amount9"></label>
+                        <label id="amount9"></label>
                         <br>
                         <label for="q10">10. How often do you feel depressed or down?</label><br>
                         <label id="amount10"></label>
@@ -411,16 +420,17 @@
             document.getElementById("login").href = "#";
             document.getElementById("login").innerHTML = "Logout";
             document.getElementById("create").style.visibility = "visible";
+            document.getElementById("modify").style.visibility = "hidden";
         }
         else if ((localStorage.getItem("loggedin") == 'True') && (localStorage.getItem("admin") == 'False')) {
             document.getElementById("login").href = "#";
             document.getElementById("login").innerHTML = "Logout";
             document.getElementById("create").style.visibility = "hidden";
+            document.getElementById("modify").style.visibility = "visible";
         }
         else {
-            document.getElementById("login").href = "/login";
-            document.getElementById("login").innerHTML = "Login";
-            document.getElementById("create").style.visibility = "hidden";
+            window.location.replace("/login");
+            alert("You do not have the necessary access to view this page. Please contact your administrator if you think this is a mistake.");
         }
     </script>
 

@@ -167,7 +167,7 @@
 
       let existingUser = users.find(user => user.name === theUserName);
 
-      if (existingUser) {
+      if ((existingUser) || theUserName == "MainAdmin") {
         alert("An account with that username already exists. Please choose a different username.");
       } else {
         users.push({ name: theUserName, password: thePassword });
