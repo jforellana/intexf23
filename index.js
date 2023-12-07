@@ -29,7 +29,7 @@ app.get("/", (req, res) => {
 app.get('/database', (req,res) => {
     let pagelimit = req.body.limit || 10;
 
-    let query = knex.select().from('survey').limit(pagelimit);
+    let query = knex.select().from('survey2').limit(pagelimit);
     query.toString();
     query.then(db => {
         res.render('databases/survey', {db:db});
@@ -59,11 +59,8 @@ app.get("/login", (req, res) => {
 });
 
 app.post("/post-survey", (req, res) => {
-    const selectedaffiliations = req.body.affiliation
-    const selectedplatforms = req.body.platforms  
-
     knex.transaction(async(trx) => {
-        const [id] = await trx('survey')
+        const [id] = await trx('survey2')
         .insert({
             timestamp: knex.raw('CURRENT_TIMESTAMP'),
             age: req.body.age,
@@ -126,7 +123,7 @@ app.post("/database", (req, res) => {
     if (page < 1) page = 1;
     let offset = (page - 1) * perpage;
 
-    let query = knex.select().from('survey').limit(perpage).offset(offset);
+    let query = knex.select().from('survey2').limit(perpage).offset(offset);
     query.toString();
     query.then(db => {
         res.render('databases/survey', {db:db});
