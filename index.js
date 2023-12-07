@@ -26,13 +26,16 @@ app.get("/", (req, res) => {
 });
 
 
-app.get('/database', (req,res) => {
+app.get('/database', async (req,res) => {
     let pagelimit = req.body.limit || 10;
+    const result = await knex('survey2').count('* as count');
+    let rowCount = result[0].count;
+
 
     let query = knex.select().from('survey2').limit(pagelimit);
     query.toString();
     query.then(db => {
-        res.render('databases/survey', {db:db});
+        res.render('databases/survey', {db:db, rows:rowCount, pagelimit:pagelimit});
     })
 });
 
@@ -41,12 +44,12 @@ app.get("/survey", (req, res) => {
 });
 
 app.get('/links', async (req, res) => {
-    let perpage = req.body.limit || 5;
+    let pagelimit = req.body.limit || 10;
     let page = req.body.page || 1;
     if (page < 1) page = 1;
-    let offset = (page - 1) * perpage;
+    let offset = (page - 1) * pagelimit;
 
-    let query = knex.select().from('plat_affil').orderBy('id').limit(perpage).offset(offset);
+    let query = knex.select().from('plat_affil').orderBy('id').limit(pagelimit).offset(offset);
     query.toString();
 
     query.then(db => {
@@ -117,16 +120,19 @@ app.post("/post-survey", (req, res) => {
     })
 });
 
-app.post("/database", (req, res) => {
-    let perpage = req.body.limit || 5;
+app.post("/database", async (req, res) => {
+    let pagelimit = req.body.limit || 5;
     let page = req.body.page || 1;
     if (page < 1) page = 1;
-    let offset = (page - 1) * perpage;
+    let offset = (page - 1) * pagelimit;
 
-    let query = knex.select().from('survey2').limit(perpage).offset(offset);
+    const result = await knex('survey2').count('* as count');
+    let rowCount = result[0].count;
+
+    let query = knex.select().from('survey2').limit(pagelimit).offset(offset);
     query.toString();
     query.then(db => {
-        res.render('databases/survey', {db:db});
+        res.render('databases/survey', {db:db, rows:rowCount, pagelimit:pagelimit});
     })
 })
 
