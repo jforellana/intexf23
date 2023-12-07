@@ -147,6 +147,32 @@ app.post("/database", async (req, res) => {
   });
 });
 
+app.post("/surveyfilterid", async (req, res) => {
+  let idfilter = req.body.idfilter;
+  let pagelimit = req.body.limit || 5;
+  let page = req.body.page || 1;
+  if (page < 1) page = 1;
+  let offset = (page - 1) * pagelimit;
+
+  const result = await knex("survey2").count("* as count");
+  let rowCount = result[0].count;
+
+  let query = knex
+    .select()
+    .from("survey2")
+    .where("unique_id", idfilter)
+    .limit(pagelimit)
+    .offset(offset);
+  query.toString();
+  query.then((db) => {
+    res.render("databases/survey", {
+      db: db,
+      rows: rowCount,
+      pagelimit: pagelimit,
+    });
+  });
+});
+
 app.post("/links", (req, res) => {
   let perpage = req.body.limit || 5;
   let page = req.body.page || 1;
@@ -166,6 +192,32 @@ app.post("/links", (req, res) => {
   });
 });
 
+app.post("/linksfilterid", async (req, res) => {
+  let idfilter = req.body.idfilter;
+  let pagelimit = req.body.limit || 5;
+  let page = req.body.page || 1;
+  if (page < 1) page = 1;
+  let offset = (page - 1) * pagelimit;
+
+  const result = await knex("survey2").count("* as count");
+  let rowCount = result[0].count;
+
+  let query = knex
+    .select()
+    .from("survey2")
+    .where("unique_id", idfilter)
+    .limit(pagelimit)
+    .offset(offset);
+  query.toString();
+  query.then((db) => {
+    res.render("databases/linking", {
+      db: db,
+      rows: rowCount,
+      pagelimit: pagelimit,
+    });
+  });
+});
+
 app.get("/createAccount", (req, res) => {
   res.render("createAccount");
 });
@@ -176,6 +228,56 @@ app.get("/modify", (req, res) => {
 
 app.get("/selectdb", (req, res) => {
   res.render("selectdb");
+});
+
+app.get("/summary", async (req, res) => {
+  let fb_q = await knex("plat_affil").count("pl_fb").where("pl_fb", 1);
+  fb_q.toString();
+  let fb = fb_q[0].count;
+
+  let tw_q = await knex("plat_affil").count("pl_tw").where("pl_tw", 1);
+  tw_q.toString();
+  let tw = tw_q[0].count;
+
+  let ig_q = await knex("plat_affil").count("pl_ig").where("pl_ig", 1);
+  ig_q.toString();
+  let ig = ig_q[0].count;
+
+  let dc_q = await knex("plat_affil").count("pl_dc").where("pl_dc", 1);
+  dc_q.toString();
+  let dc = dc_q[0].count;
+
+  let yt_q = await knex("plat_affil").count("pl_yt").where("pl_yt", 1);
+  yt_q.toString();
+  let yt = yt_q[0].count;
+
+  let re_q = await knex("plat_affil").count("pl_re").where("pl_re", 1);
+  re_q.toString();
+  let re = re_q[0].count;
+
+  let pt_q = await knex("plat_affil").count("pl_pt").where("pl_pt", 1);
+  pt_q.toString();
+  let pt = pt_q[0].count;
+
+  let sc_q = await knex("plat_affil").count("pl_sc").where("pl_sc", 1);
+  sc_q.toString();
+  let sc = sc_q[0].count;
+
+  let tt_q = await knex("plat_affil").count("pl_tt").where("pl_tt", 1);
+  tt_q.toString();
+  let tt = tt_q[0].count;
+
+  res.render("databases/summary", {
+    fb: fb,
+    tw: tw,
+    ig: ig,
+    dc: dc,
+    yt: yt,
+    re: re,
+    pt: pt,
+    sc: sc,
+    tt: tt,
+  });
 });
 
 app.listen(port, () => console.log("Intex is listening"));

@@ -11580,3 +11580,45 @@ body {
 .footer {
   padding: 5rem 0;
 }
+
+.fb-color
+{
+  color: #3B5998
+}
+.tw-color
+{
+  color: #08a0e9
+}
+.ig-color
+{
+  color: #515BD4
+}
+.dc-color
+{
+  color: #7289da
+}
+.yt-color
+{
+  color: #E62117
+}
+.re-color
+{
+  color: #FF4500
+}
+.pt-color
+{
+  color: #BD081C
+}
+.sc-color
+{
+  color: #FFFC00
+}
+.tt-color
+{
+  color: #ff0050;
+}
+.number
+{
+  font-size: larger;
+  font-weight: bolder;
+}

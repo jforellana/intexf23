@@ -166,6 +166,9 @@
         window.location.replace("/")
       }
     }
+    if ((localStorage.getItem("loggedin") == 'True') && (localStorage.getItem("admin") == 'True')) {
+      window.location.replace("/createAccount");
+    }
 
   </script>
 </body>
