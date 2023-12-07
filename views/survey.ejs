@@ -71,7 +71,8 @@
                 <form action="/post-survey" method="post">
                     <fieldset class="projects-section">
                         <legend id="personal-info">Personal Information</legend>
-                        <label for="age">Enter your age</label> <input type="number" name="age" placeholder="Age" id="age" min="0" max="100" required>
+                        <label for="age">Enter your age</label> <input type="number" name="age" placeholder="Age"
+                            id="age" min="0" max="100" required>
                         <br><br>
                         <label for="gender">Select your gender</label>
                         <select name="gender" id="gender" required>
@@ -99,7 +100,7 @@
                             <option value="Retired">Retired</option>
                         </select>
                         <br><br>
-                        <legend>Check all Organizations you are affiliated with: </legend>
+                        <legend>Select all Organizations you are affiliated with: </legend>
                         <table>
                             <tr>
                                 <td>
@@ -279,19 +280,20 @@
                                     </select>
                                 </td>
                             </tr>
-                                <td>
-                                    <label for="tiktok">Tiktok</label>
-                                </td>
-                                <td>
-                                    <select name="p_tiktok" id="tiktok">
-                                        <option value="0" selected>no</option>
-                                        <option value="1">yes</option>
-                                    </select>
-                                </td>
+                            <td>
+                                <label for="tiktok">Tiktok</label>
+                            </td>
+                            <td>
+                                <select name="p_tiktok" id="tiktok">
+                                    <option value="0" selected>no</option>
+                                    <option value="1">yes</option>
+                                </select>
+                            </td>
                             </tr>
                         </table>
                         <br><br>
-                        <label for="avg_time_social">What is the average time you spend on Social Media every day?</label>
+                        <label for="avg_time_social">What is the average time you spend on Social Media every
+                            day?</label>
                         <select name="avg_time_social" id="avg_time_social" required>
                             <option value="" disabled selected>- select -</option>
                             <option value="Less than an hour">Less than an hour</option>
@@ -337,7 +339,7 @@
                             onchange="showValue(4, this.value);" required>
                         <label id="amount4"></label>
                         <br>
-                        <label for="q5">5. How much are you bothered by worries?</label> <br>
+                        <label for="q5">5. How often are you bothered by worries?</label> <br>
                         <label id="amount5"></label>
                         <input type="range" name="q5" id="q5" value="1" step="1" min="1" max="5"
                             onchange="showValue(5, this.value);" required>
