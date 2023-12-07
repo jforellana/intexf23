@@ -136,29 +136,6 @@
 
   <script>
 
-    // function createANewAccount() {
-    //   const users = [{ name: (document.getElementById("entuser").value), password: (document.getElementById("entpass").value) }];
-
-    //   const serializedUsers = JSON.stringify(users);
-
-
-    //   let theUserName = document.getElementById("entuser").value;
-    //   let thePassword = document.getElementById("entpass").value;
-    //   let existingUser = users.find(theUserName => theUserName[0] == theUserName);
-    //   if (existingUser) {
-    //     existingUser[0] += thePassword;
-    //   }
-    //   else {
-    //     users.push([theUserName, thePassword]);
-    //   }
-
-    //   localStorage.set('users', serializedUsers);
-
-
-
-    // }
-
-
     function createANewAccount() {
       const users = JSON.parse(localStorage.getItem("users")) || [];
 
@@ -174,6 +151,7 @@
         localStorage.setItem("users", JSON.stringify(users));
 
         alert("Account created successfully!");
+        window.local.replace("/")
       }
     }
 
