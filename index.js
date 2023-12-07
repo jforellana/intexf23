@@ -89,21 +89,21 @@ app.post("/post-survey", (req, res) => {
         await trx('plat_affil')
         .insert({
             id: newid,
-            pl_fb: p_facebook,
-            pl_tw: p_twitter,
-            pl_ig: p_instagram,
-            pl_yt: p_youtube,
-            pl_dc: p_discord,
-            pl_re: p_reddit,
-            pl_pt: p_pinterest,
-            pl_sc: p_snapchat,
-            pl_tt: p_tiktok,
-            ao_uv: a_university,
-            ao_pr: a_private,
-            ao_sc: a_school,
-            ao_co: a_company,
-            ao_gt: a_government,
-            ao_na: a_null            
+            pl_fb: req.body.p_facebook,
+            pl_tw: req.body.p_twitter,
+            pl_ig: req.body.p_instagram,
+            pl_yt: req.body.p_youtube,
+            pl_dc: req.body.p_discord,
+            pl_re: req.body.p_reddit,
+            pl_pt: req.body.p_pinterest,
+            pl_sc: req.body.p_snapchat,
+            pl_tt: req.body.p_tiktok,
+            ao_uv: req.body.a_university,
+            ao_pr: req.body.a_private,
+            ao_sc: req.body.a_school,
+            ao_co: req.body.a_company,
+            ao_gt: req.body.a_government,
+            ao_na: req.body.a_null            
         })
         .then(mydata => {
             res.redirect("/");
