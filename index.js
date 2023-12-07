@@ -12,11 +12,12 @@ app.use(express.static(path.join(__dirname, "public")));
 const knex = require("knex")({
   client: "pg",
   connection: {
-    host: "localhost",
-    user: "postgres",
-    password: "password",
-    database: "mental_health",
-    port: 5432,
+    host: process.env.RDS_HOSTNAME || "localhost",
+    user: process.env.RDS_USERNAME || "postgres",
+    password: process.env.RDS_PASSWORD || "password",
+    database: process.env.RDS_DB_NAME || "mental_health",
+    port: process.env.RDS_PORT || 5432,
+    ssl: process.env.DB_SSL ? {rejectUnauthorized: false} : false
   },
 });
 
@@ -58,9 +59,6 @@ app.get("/login", (req, res) => {
 });
 
 app.post("/post-survey", (req, res) => {
-    const selectedaffiliations = req.body.affiliation
-    const selectedplatforms = req.body.platforms  
-
     knex.transaction(async(trx) => {
         const [id] = await trx('survey2')
         .insert({
@@ -149,9 +147,5 @@ app.post('/links', (req, res) => {
 app.get("/createAccount", (req, res) => {
   res.render("createAccount");
 });
-
-app.get("/modify", (req, res) =>{
-  res.render("modify");
-})
 
 app.listen(port, () => console.log("Intex is listening"));
