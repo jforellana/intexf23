@@ -230,6 +230,10 @@ app.get("/selectdb", (req, res) => {
   res.render("selectdb");
 });
 
+app.get("/finishedSurvey", (req, res) => {
+  res.render("finishedSurvey");
+});
+
 app.get("/summary", async (req, res) => {
   let fb_q = await knex("plat_affil").count("pl_fb").where("pl_fb", 1);
   fb_q.toString();
