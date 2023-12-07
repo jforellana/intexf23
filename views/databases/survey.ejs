@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <script>
     function logout() {
-        localStorage.setItem("loggedin", 'False');
-        window.location.replace("/");
+      localStorage.setItem("loggedin", 'False');
+      window.location.replace("/");
     }
   </script>
   <meta charset="UTF-8">
@@ -19,7 +20,7 @@
     href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
     rel="stylesheet" />
   <!-- Core theme CSS (includes Bootstrap)-->
-  <link rel="stylesheet" href="../public/css/styles.css">
+  <link rel="stylesheet" href="css/styles.css">
   <style>
     body {
       background: linear-gradient(to bottom,
@@ -41,6 +42,7 @@
     }
   </style>
 </head>
+
 <body>
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg bg-black fixed-top" id="mainNav">
@@ -80,8 +82,8 @@
     </div>
   </header>
   <section class="projects-section mx-2">
-    <nav class="navbar fixed-top">
-      <div class="row fixed-top">
+    <nav class="navbar">
+      <div class="row">
         <div class="col-1">
         </div>
         <div class="text-center whytho1">
@@ -90,89 +92,131 @@
         <div class="col-10 mx-4 my-5 whytho2">
           <div>
             <form action="/database" method="post">
-            <label for="limit">rows per page</label>
-            <select name="limit" id="limit" required>
+              <label for="limit">rows per page</label>
+              <select name="limit" id="limit" required>
                 <option value="" disabled selected>- select -</option>
                 <option value="5">5</option>
                 <option value="10">10</option>
                 <option value="50">50</option>
                 <option value="100">100</option>
-            </select>
-            <br>
-            <%
-              let pagecount = rows/pagelimit; 
-            %>
-            <label for="page">jump to page</label>
-            <select name="page" id="page">
-              <% for (let i = 1; i < pagecount; i++) {%>
-              <option><%= i %></option>
-              <% } %>
-            </select>
-            <!-- <label for="page">jump to page</label> <input name="page" type="number" placeholder="enter page number"> -->
-            <button type="submit">update</button> 
+              </select>
+              <br>
+              <% let pagecount=rows/pagelimit; %>
+                <label for="page">jump to page</label>
+                <select name="page" id="page">
+                  <% for (let i=1; i < pagecount; i++) {%>
+                    <option>
+                      <%= i %>
+                    </option>
+                    <% } %>
+                </select>
+                <!-- <label for="page">jump to page</label> <input name="page" type="number" placeholder="enter page number"> -->
+                <button type="submit">update</button>
             </form>
             <br><br>
             <div class="row">
               <div class="col-auto mx-2">
                 <table style="background-color: antiquewhite; border: 1px solid black;">
                   <thead style="background-color: cornflowerblue; color: white;">
+                    <tr>
+                      <th style="text-align: left;">ID</th>
+                      <th style="text-align: left;">TIMESTAMP</th>
+                      <th style="text-align: left;">AGE</th>
+                      <th style="text-align: left;">GENDER</th>
+                      <th style="text-align: left;">RELATIONSHIP STATUS</th>
+                      <th style="text-align: left;">OCCUPATION STATUS</th>
+                      <th style="text-align: left;">LOCATION</th>
+                      <th style="text-align: left;">USE OF SOCIAL MEDIA</th>
+                      <th style="text-align: left;">AVERAGE TIME/DAY</th>
+                      <th style="text-align: left;">NO SPECIFIC PURPOSE</th>
+                      <th style="text-align: left;">DISTRACTED BY SOCIAL MEDIA</th>
+                      <th style="text-align: left;">RESTLESS WITHOUT <br> SOCIAL MEDIA</th>
+                      <th style="text-align: left;">DISTRACTED IN GENERAL</th>
+                      <th style="text-align: left;">BOTHERED BY WORRIES</th>
+                      <th style="text-align: left;">DIFFICULT TO CONCENTRATE</th>
+                      <th style="text-align: left;">COMPARE TO <br> SUCCESSFUL PEOPLE</th>
+                      <th style="text-align: left;">FEELINGS ABOUT COMPARISONS</th>
+                      <th style="text-align: left;">SOCIAL VALIDATION</th>
+                      <th style="text-align: left;">FEEL DEPRESSED <br> OR DOWN</th>
+                      <th style="text-align: left;">INTERESTS FLUCTUATE</th>
+                      <th style="text-align: left;">SLEEP ISSUES</th>
+                    </tr>
+                  </thead>
+                  <tbody style="font-family: Arial; font-size: 9pt;">
+                    <% for (let iCount=0; iCount < db.length; iCount++) { %>
                       <tr>
-                        <th style="text-align: left;">ID</th>
-                        <th style="text-align: left;">TIMESTAMP</th>
-                        <th style="text-align: left;">AGE</th>
-                        <th style="text-align: left;">GENDER</th>
-                        <th style="text-align: left;">RELATIONSHIP STATUS</th>
-                        <th style="text-align: left;">OCCUPATION STATUS</th>
-                        <th style="text-align: left;">LOCATION</th>
-                        <th style="text-align: left;">USE OF SOCIAL MEDIA</th>
-                        <th style="text-align: left;">AVERAGE TIME/DAY</th>
-                        <th style="text-align: left;">NO SPECIFIC PURPOSE</th>
-                        <th style="text-align: left;">DISTRACTED BY SOCIAL MEDIA</th>
-                        <th style="text-align: left;">RESTLESS WITHOUT <br> SOCIAL MEDIA</th>
-                        <th style="text-align: left;">DISTRACTED IN GENERAL</th>
-                        <th style="text-align: left;">BOTHERED BY WORRIES</th>
-                        <th style="text-align: left;">DIFFICULT TO CONCENTRATE</th>
-                        <th style="text-align: left;">COMPARE TO <br> SUCCESSFUL PEOPLE</th>
-                        <th style="text-align: left;">FEELINGS ABOUT COMPARISONS</th>
-                        <th style="text-align: left;">SOCIAL VALIDATION</th>
-                        <th style="text-align: left;">FEEL DEPRESSED <br> OR DOWN</th>
-                        <th style="text-align: left;">INTERESTS FLUCTUATE</th>
-                        <th style="text-align: left;">SLEEP ISSUES</th>
+                        <td>
+                          <%= db[iCount].unique_id %>
+                        </td>
+                        <td>
+                          <%= db[iCount].timestamp %>
+                        </td>
+                        <td>
+                          <%= db[iCount].age %>
+                        </td>
+                        <td>
+                          <%= db[iCount].gender %>
+                        </td>
+                        <td>
+                          <%= db[iCount].rel_status %>
+                        </td>
+                        <td>
+                          <%= db[iCount].occ_status %>
+                        </td>
+                        <td>
+                          <%= db[iCount].location %>
+                        </td>
+                        <td>
+                          <%= db[iCount].social_media_usage %>
+                        </td>
+                        <td>
+                          <%= db[iCount].avg_time_social %>
+                        </td>
+                        <td>
+                          <%= db[iCount].use_no_purpose %>
+                        </td>
+                        <td>
+                          <%= db[iCount].distracted_social %>
+                        </td>
+                        <td>
+                          <%= db[iCount].restless_no_media %>
+                        </td>
+                        <td>
+                          <%= db[iCount].distracted_general %>
+                        </td>
+                        <td>
+                          <%= db[iCount].bothered_worries %>
+                        </td>
+                        <td>
+                          <%= db[iCount].difficult_concentrated %>
+                        </td>
+                        <td>
+                          <%= db[iCount].compare_successful %>
+                        </td>
+                        <td>
+                          <%= db[iCount].feeling_comparison %>
+                        </td>
+                        <td>
+                          <%= db[iCount].validation_social %>
+                        </td>
+                        <td>
+                          <%= db[iCount].depressed_down %>
+                        </td>
+                        <td>
+                          <%= db[iCount].fluctuate_interests %>
+                        </td>
+                        <td>
+                          <%= db[iCount].sleep_issues %>
+                        </td>
+                        <td style="text-align: center;">
+                        </td>
                       </tr>
-                    </thead>
-                    <tbody style="font-family: Arial; font-size: 9pt;">
-                      <% for (let iCount = 0; iCount < db.length; iCount++) { %>
-                        <tr>
-                          <td><%= db[iCount].unique_id %></td>
-                          <td><%= db[iCount].timestamp %></td>
-                          <td><%= db[iCount].age %></td>
-                          <td><%= db[iCount].gender %></td>
-                          <td><%= db[iCount].rel_status %></td>
-                          <td><%= db[iCount].occ_status %></td>
-                          <td><%= db[iCount].location %></td>
-                          <td><%= db[iCount].social_media_usage %></td>
-                          <td><%= db[iCount].avg_time_social %></td>
-                          <td><%= db[iCount].use_no_purpose %></td>
-                          <td><%= db[iCount].distracted_social %></td>
-                          <td><%= db[iCount].restless_no_media %></td>
-                          <td><%= db[iCount].distracted_general %></td>
-                          <td><%= db[iCount].bothered_worries %></td>
-                          <td><%= db[iCount].difficult_concentrated %></td>
-                          <td><%= db[iCount].compare_successful %></td>
-                          <td><%= db[iCount].feeling_comparison %></td>
-                          <td><%= db[iCount].validation_social %></td>
-                          <td><%= db[iCount].depressed_down %></td>
-                          <td><%= db[iCount].fluctuate_interests %></td>
-                          <td><%= db[iCount].sleep_issues %></td>
-                          <td style="text-align: center;">
-                          </td>
-                        </tr>
                       <% } %>
-                    </tbody>
-                  </table>
-                </div>
+                  </tbody>
+                </table>
               </div>
-        </div>
+            </div>
+          </div>
         </div>
         <div class="col-1">
         </div>
