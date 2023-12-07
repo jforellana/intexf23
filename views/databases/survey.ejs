@@ -1,91 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+  <!-- Font Awesome icons (free version)-->
+  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+  <!-- Google fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link rel="stylesheet" href="../public/css/styles.css">
+  <style>
+    body {
+      background: linear-gradient(to bottom,
+          rgba(0, 0, 0, 0.3) 0%,
+          rgba(0, 0, 0, 0.7) 75%,
+          #000 100%);
+      background-position: center;
+      background-repeat: repeat;
+      background-attachment: scroll;
+      background-size: cover;
+    }
+
+    .whytho1 {
+      margin-top: 100px;
+    }
+
+    .whytho2 {
+      margin-top: -100px;
+    }
+  </style>
 </head>
+
 <body>
-  <label><b>Mental Health Information</b></label>
-  <br><br>
-  <div>
-    <form action="/database" method="post">
-    <label for="limit">rows per page</label>
-    <select name="limit" id="limit" required>
-        <option value="" disabled selected>- select -</option>
-        <option value="5">5</option>
-        <option value="10">10</option>
-        <option value="50">50</option>
-        <option value="100">100</option>
-    </select>
-    <br>
-    <label for="page">jump to page</label> <input name="page" type="number" placeholder="enter page number">
-    <button type="submit">update</button> 
-    </form>
-    <br><br>
-</div>
-  <table style="width: 100%; background-color: antiquewhite; border: 1px solid black;">
-    <thead style="background-color: cornflowerblue; color: white;">
-      <tr>
-        <th style="text-align: left;">ID</th>
-        <th style="text-align: left;">TIMESTAMP</th>
-        <th style="text-align: left;">AGE</th>
-        <th style="text-align: left;">GENDER</th>
-        <th style="text-align: left;">RELATIONSHIP STATUS</th>
-        <th style="text-align: left;">OCCUPATION STATUS</th>
-        <th style="text-align: left;">LOCATION</th>
-        <th style="text-align: left;">DO YOU USE SOCIAL MEDIA</th>
-        <th style="text-align: left;">HOW MUCH TIME DO YOU SPEND ON SOCIAL MEDIA PER DAY ON AVERAGE</th>
-        <th style="text-align: left;">HOW OFTEN DO YOU USE SOCIAL MEDIA WITH NO PURPOSE</th>
-        <th style="text-align: left;">HOW OFTEN DO YOU GET DISTRACTED BY SOCIAL MEDIA</th>
-        <th style="text-align: left;">DO YOU FEEL RESTLESS IF YOU HAVEN'T USED SOCIAL MEDIA IN A WHILE</th>
-        <th style="text-align: left;">HOW EASILY DISTRACTED ARE YOU</th>
-        <th style="text-align: left;">HOW MUCH ARE YOU BOTHERED BY WORRIES</th>  
-        <th style="text-align: left;">DO YOU FIND IT DIFFICULT TO CONCENTRATE ON THINGS</th>
-        <th style="text-align: left;">HOW OFTEN DO YOU COMPARE YOURSELF TO OTHERS IN SOCIAL MEDIA</th>
-        <th style="text-align: left;">FOLLOWING THE PREVIOUS QUESTIONS, HOW DO YOU FEEL ABOUT THESE COMPARISONS</th>
-        <th style="text-align: left;">HOW OFTEN DO YOU LOOK TO SEEK VALIDATION FROM FEATURES OF SOCIAL MEDIA</th>
-        <th style="text-align: left;">HOW OFTEN DO YOU FEEL DEPRESSED OR DOWN</th>
-        <th style="text-align: left;">HOW FREQUENTLY DOES YOU INTEREST IN DAILY ACTIVITIES FLUCTUATE?</th>
-        <th style="text-align: left;">HOW OFTEN DO YOU FACE ISSUES REGARDING SLEEP</th>
-      </tr>
-    </thead>
-    <tbody style="font-family: Arial; font-size: 9pt;">
-      <% for (let iCount = 0; iCount < db.length; iCount++) { %>
-        <tr>
-          <td><%= db[iCount].unique_id %></td>
-          <td><%= db[iCount].timestamp %></td>
-          <td><%= db[iCount].age %></td>
-          <td><%= db[iCount].gender %></td>
-          <td><%= db[iCount].rel_status %></td>
-          <td><%= db[iCount].occ_status %></td>
-          <td><%= db[iCount].location %></td>
-          <td><%= db[iCount].social_media_usage %></td>
-          <td><%= db[iCount].avg_time_social %></td>
-          <td><%= db[iCount].use_no_purpose %></td>
-          <td><%= db[iCount].distracted_social %></td>
-          <td><%= db[iCount].restless_no_media %></td>
-          <td><%= db[iCount].distracted_general %></td>
-          <td><%= db[iCount].bothered_worries %></td>
-          <td><%= db[iCount].difficult_concentrated %></td>
-          <td><%= db[iCount].compare_successful %></td>
-          <td><%= db[iCount].feeling_comparison %></td>
-          <td><%= db[iCount].validation_social %></td>
-          <td><%= db[iCount].depressed_down %></td>
-          <td><%= db[iCount].fluctuate_interests %></td>
-          <td><%= db[iCount].sleep_issues %></td>
-          <td style="text-align: center;">
-          </td>
-        </tr>
-      <% } %>
-    </tbody>
-  </table>
+
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-lg bg-black fixed-top" id="mainNav">
+    <div class="container px-4 px-lg-5">
+      <a class="navbar-brand" href="#page-top">Home</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+        aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item" id="create"><a class="nav-link" href="/createAccount">Create Account</a></li>
+          <li class="nav-item"><a class="nav-link" href="#dashboard">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="/survey">Survey</a></li>
+          <li class="nav-item"><a class="nav-link" href="/database">Database</a></li>
+          <li class="nav-item"><a class="nav-link" href="#bagongkwan">More</a></li>
+          <li class="nav-item" onclick="logout()"><a class="nav-link" href="/login" id="login">Login</a></li>
+          <li class="nav-item" id="modify"><a class="nav-link" href="/modify"><i class="fas fa-user"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Masthead-->
+  <header>
+    <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center py-4">
+      <div class="d-flex justify-content-center">
+        <!-- <div class="text-center">
+          <br><br><br><br>
+          <h1>Raw Data</h1>
+          <h2 class="text-white-50 mx-auto mt-2 mb-5">Data from our survey</h2>
+          <a class="btn btn-primary" href="#mhi">Explore Data</a>
+        </div> -->
+      </div>
+    </div>
+  </header>
+  <section class="projects-section mx-2">
+
+
+
+
+    <nav class="navbar fixed-top">
+      <div class="row fixed-top">
+        <div class="col-1">
+        </div>
+        <div class="text-center whytho1">
+          <h2 id="mhi"><b>Mental Health Information</b></h2>
+        </div>
+        <div class="col-10 mx-4 my-5 whytho2">
+          <form action="/links" method="post">
+            <label for="limit">Rows per page</label>
+            <select name="limit" id="limit" required>
+              <option value="" disabled selected>- select -</option>
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+            </select>
+            <span class="mx-4">
+              <label for="page">Jump to page</label><input name="page" type="number" placeholder="enter page number">
+            </span>
+            <span>
+              <button class="btn btn-sm btn-secondary" type="submit">Update</button>
+            </span>
+          </form>
+        </div>
+        <div class="col-1">
+        </div>
+      </div>
+    </nav>
+
+    <div class="row">
+      <div class="col-auto mx-2">
+        <br><br><br>
+        <table style="background-color: antiquewhite; border: 1px solid black;">
+          <thead style="background-color: cornflowerblue; color: white;">
+            <tr>
+              <th style="text-align: left;">ID</th>
+              <th style="text-align: left;">TIMESTAMP</th>
+              <th style="text-align: left;">AGE</th>
+              <th style="text-align: left;">GENDER</th>
+              <th style="text-align: left;">RELATIONSHIP STATUS</th>
+              <th style="text-align: left;">OCCUPATION STATUS</th>
+              <th style="text-align: left;">LOCATION</th>
+              <th style="text-align: left;">USE OF SOCIAL MEDIA</th>
+              <th style="text-align: left;">AVERAGE TIME/DAY</th>
+              <th style="text-align: left;">NO SPECIFIC PURPOSE</th>
+              <th style="text-align: left;">DISTRACTED BY SOCIAL MEDIA</th>
+              <th style="text-align: left;">RESTLESS WITHOUT <br> SOCIAL MEDIA</th>
+              <th style="text-align: left;">DISTRACTED IN GENERAL</th>
+              <th style="text-align: left;">BOTHERED BY WORRIES</th>
+              <th style="text-align: left;">DIFFICULT TO CONCENTRATE</th>
+              <th style="text-align: left;">COMPARE TO <br> SUCCESSFUL PEOPLE</th>
+              <th style="text-align: left;">FEELINGS ABOUT COMPARISONS</th>
+              <th style="text-align: left;">SOCIAL VALIDATION</th>
+              <th style="text-align: left;">FEEL DEPRESSED <br> OR DOWN</th>
+              <th style="text-align: left;">INTERESTS FLUCTUATE</th>
+              <th style="text-align: left;">SLEEP ISSUES</th>
+            </tr>
+          </thead>
+          <tbody style="font-family: Arial; font-size: 9pt;">
+            <% for (let iCount=0; iCount < db.length; iCount++) { %>
+              <tr>
+                <td>
+                  <%= db[iCount].unique_id %>
+                </td>
+                <td>
+                  <%= db[iCount].timestamp %>
+                </td>
+                <td>
+                  <%= db[iCount].age %>
+                </td>
+                <td>
+                  <%= db[iCount].gender %>
+                </td>
+                <td>
+                  <%= db[iCount].rel_status %>
+                </td>
+                <td>
+                  <%= db[iCount].occ_status %>
+                </td>
+                <td>
+                  <%= db[iCount].location %>
+                </td>
+                <td>
+                  <%= db[iCount].social_media_usage %>
+                </td>
+                <td>
+                  <%= db[iCount].avg_time_social %>
+                </td>
+                <td>
+                  <%= db[iCount].use_no_purpose %>
+                </td>
+                <td>
+                  <%= db[iCount].distracted_social %>
+                </td>
+                <td>
+                  <%= db[iCount].restless_no_media %>
+                </td>
+                <td>
+                  <%= db[iCount].distracted_general %>
+                </td>
+                <td>
+                  <%= db[iCount].bothered_worries %>
+                </td>
+                <td>
+                  <%= db[iCount].difficult_concentrated %>
+                </td>
+                <td>
+                  <%= db[iCount].compare_successful %>
+                </td>
+                <td>
+                  <%= db[iCount].feeling_comparison %>
+                </td>
+                <td>
+                  <%= db[iCount].validation_social %>
+                </td>
+                <td>
+                  <%= db[iCount].depressed_down %>
+                </td>
+                <td>
+                  <%= db[iCount].fluctuate_interests %>
+                </td>
+                <td>
+                  <%= db[iCount].sleep_issues %>
+                </td>
+                <td style="text-align: center;">
+                </td>
+              </tr>
+              <% } %>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
+  </section>
+
   <br><br>
   <script>
-    if ((localStorage.getItem("loggedin") != 'True') && (localStorage.getItem("admin") != 'True')){
+    if ((localStorage.getItem("loggedin") == 'True') && (localStorage.getItem("admin") == 'True')) {
+      document.getElementById("login").href = "#";
+      document.getElementById("login").innerHTML = "Logout";
+      document.getElementById("create").style.visibility = "visible";
+      document.getElementById("modify").style.visibility = "hidden";
+    }
+    else if ((localStorage.getItem("loggedin") == 'True') && (localStorage.getItem("admin") == 'False')) {
+      document.getElementById("login").href = "#";
+      document.getElementById("login").innerHTML = "Logout";
+      document.getElementById("create").style.visibility = "hidden";
+      document.getElementById("modify").style.visibility = "visible";
+    }
+    else {
       window.location.replace("/login");
-      alert("You do not have the necessary access to view this page. Please contact your administrator if you think this is a mistake.")
+      alert("You do not have the necessary access to view this page. Please contact your administrator if you think this is a mistake.");
     }
   </script>
 </body>
+
 </html>
