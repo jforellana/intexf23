@@ -11611,7 +11611,7 @@ body {
 }
 .sc-color
 {
-  color: #FFFC00
+  color: #000000;
 }
 .tt-color
 {
@@ -11619,6 +11619,6 @@ body {
 }
 .number
 {
-  font-size: larger;
+  font-size: 30px;
   font-weight: bolder;
 }
