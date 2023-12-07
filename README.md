@@ -1,7 +1,7 @@
 # intexf23
 intex
 
-[Our Website]([url](https://provomentalhealth.is404.net/))
+Our Website: https://provomentalhealth.is404.net/
 
 Main account information:
 Username: MainAdmin
