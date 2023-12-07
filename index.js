@@ -139,7 +139,7 @@ app.post("/database", async (req, res) => {
 app.post("/surveyfilterid", async (req, res) => {
   let idfilter = req.body.idfilter
 
-  let query = knex.select().from('survey2').where('id', idfilter)
+  let query = knex.select().from('survey2').where('unique_id', idfilter)
   query.toString();
     query.then(db => {
         res.render('databases/survey', {db:db});
@@ -163,7 +163,7 @@ app.post('/links', (req, res) => {
 app.post("/linksfilterid", async (req, res) => {
   let idfilter = req.body.idfilter
 
-  let query = knex.select().from('survey2').where('id', idfilter)
+  let query = knex.select().from('survey2').where('unique_id', idfilter)
   query.toString();
     query.then(db => {
         res.render('databases/linking', {db:db});
