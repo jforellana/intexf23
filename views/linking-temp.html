@@ -12,7 +12,7 @@
       href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
       rel="stylesheet" />
   <!-- Core theme CSS (includes Bootstrap)-->
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="../public/css/styles.css">
 </head>
 <body id="page-top">
     <!-- Navigation-->
@@ -30,8 +30,8 @@
                     <li class="nav-item" id="create"><a class="nav-link" href="/createAccount">Create Account</a></li>
                     <li class="nav-item"><a class="nav-link" href="#dashboard">Dashboard</a></li>
                     <li class="nav-item"><a class="nav-link" href="/survey">Survey</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/selectdb">Database</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/#bagongkwan">More</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/database">Database</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#bagongkwan">More</a></li>
                     <li class="nav-item" onclick="logout()"><a class="nav-link" href="/login" id="login">Login</a></li>
                     <li class="nav-item" id="modify"><a class="nav-link" href="/modify"><i class="fas fa-user"></i></a>
                     </li>
@@ -45,33 +45,35 @@
                 <h2 id="database"><b>Mental Health Information</b></h2>
             </div>
         </div>
-        <div class="row">
-            <div class="col-1">
+        <nav class="navbar fixed-top">
+            <div class="row fixed-top my-5">
+                <div class="col-1">
+                </div>
+                <div class="col-10 mx-4 my-5">
+                    <form action="/links" method="post">
+                        <label for="limit">Rows per page</label>
+                        <select name="limit" id="limit" required>
+                            <option value="" disabled selected>- select -</option>
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select>
+                        <span class="mx-4">
+                            <label for="page">Jump to page</label><input name="page" type="number" placeholder="enter page number">
+                        </span>
+                        <span>
+                            <button class="btn btn-sm btn-secondary" type="submit">Update</button>
+                        </span>
+                    </form>
+                </div>
+                <div class="col-1">
+                </div>
             </div>
-            <div class="col-10 mx-4 my-5">
-                <form action="/links" method="post">
-                    <label for="limit">Rows per page</label>
-                    <select name="limit" id="limit" required>
-                        <option value="" disabled selected>- select -</option>
-                        <option value="5">5</option>
-                        <option value="10">10</option>
-                        <option value="50">50</option>
-                        <option value="100">100</option>
-                    </select>
-                    <span class="mx-4">
-                        <label for="page">Jump to page</label><input name="page" type="number" placeholder="enter page number">
-                    </span>
-                    <span>
-                        <button class="btn btn-sm btn-secondary" type="submit">Update</button>
-                    </span>
-                </form>
-            </div>
-            <div class="col-1">
-            </div>
-        </div>
+        </nav>
         <div class="row">
             <div class="col-auto mx-2">
-                <table style="border-color: inherit; border-style: solid; border-width: 1;">
+                <table>
                     <thead style="border: 1px solid #000;" class="text-center">
                         <tr>
                             <th>ID</th>
@@ -133,10 +135,10 @@
             document.getElementById("create").style.visibility = "hidden";
             document.getElementById("modify").style.visibility = "visible";
         }
-        else {
-            window.location.replace("/login");
-            alert("You do not have the necessary access to view this page. Please contact your administrator if you think this is a mistake.")
-        }
+        // else {
+        //     window.location.replace("/login");
+        //     alert("You do not have the necessary access to view this page. Please contact your administrator if you think this is a mistake.")
+        // }
 
     </script>
 </body>
