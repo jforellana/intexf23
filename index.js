@@ -45,7 +45,7 @@ app.get("/survey", (req, res) => {
   res.render("survey");
 });
 
-app.get("/links", async (req, res) => {
+app.get("/affiliations", async (req, res) => {
   let pagelimit = req.body.limit || 10;
   let page = req.body.page || 1;
   if (page < 1) page = 1;
@@ -60,7 +60,26 @@ app.get("/links", async (req, res) => {
   query.toString();
 
   query.then((db) => {
-    res.render("databases/linking", { db: db });
+    res.render("databases/affiliations", { db: db });
+  });
+});
+
+app.get("/platforms", async (req, res) => {
+  let pagelimit = req.body.limit || 10;
+  let page = req.body.page || 1;
+  if (page < 1) page = 1;
+  let offset = (page - 1) * pagelimit;
+
+  let query = knex
+    .select()
+    .from("plat_affil")
+    .orderBy("id")
+    .limit(pagelimit)
+    .offset(offset);
+  query.toString();
+
+  query.then((db) => {
+    res.render("databases/platforms", { db: db });
   });
 });
 
@@ -147,6 +166,46 @@ app.post("/database", async (req, res) => {
   });
 });
 
+app.post("/affillinks", async (req, res) => {
+  let pagelimit = req.body.limit || 5;
+  let page = req.body.page || 1;
+  if (page < 1) page = 1;
+  let offset = (page - 1) * pagelimit;
+
+  const result = await knex("plat_affil").count("* as count");
+  let rowCount = result[0].count;
+
+  let query = knex.select().from("plat_affil").limit(pagelimit).offset(offset);
+  query.toString();
+  query.then((db) => {
+    res.render("databases/affiliations", {
+      db: db,
+      rows: rowCount,
+      pagelimit: pagelimit,
+    });
+  });
+});
+
+app.post("/platlinks", async (req, res) => {
+  let pagelimit = req.body.limit || 5;
+  let page = req.body.page || 1;
+  if (page < 1) page = 1;
+  let offset = (page - 1) * pagelimit;
+
+  const result = await knex("plat_affil").count("* as count");
+  let rowCount = result[0].count;
+
+  let query = knex.select().from("plat_affil").limit(pagelimit).offset(offset);
+  query.toString();
+  query.then((db) => {
+    res.render("databases/platforms", {
+      db: db,
+      rows: rowCount,
+      pagelimit: pagelimit,
+    });
+  });
+});
+
 app.post("/surveyfilterid", async (req, res) => {
   let idfilter = req.body.idfilter;
   let pagelimit = req.body.limit || 5;
@@ -199,13 +258,13 @@ app.post("/linksfilterid", async (req, res) => {
   if (page < 1) page = 1;
   let offset = (page - 1) * pagelimit;
 
-  const result = await knex("survey2").count("* as count");
+  const result = await knex("plat_affil").count("* as count");
   let rowCount = result[0].count;
 
   let query = knex
     .select()
-    .from("survey2")
-    .where("unique_id", idfilter)
+    .from("plat_affil")
+    .where("id", idfilter)
     .limit(pagelimit)
     .offset(offset);
   query.toString();
@@ -244,13 +303,13 @@ app.post("/platfilterid", async (req, res) => {
   if (page < 1) page = 1;
   let offset = (page - 1) * pagelimit;
 
-  const result = await knex("survey2").count("* as count");
+  const result = await knex("plat_affil").count("* as count");
   let rowCount = result[0].count;
 
   let query = knex
     .select()
-    .from("survey2")
-    .where("unique_id", idfilter)
+    .from("plat_affil")
+    .where("id", idfilter)
     .limit(pagelimit)
     .offset(offset);
   query.toString();

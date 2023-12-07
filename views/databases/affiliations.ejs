@@ -60,7 +60,7 @@
                 </span>
             </div>
             <div class="col-6 mx-4 my-5">
-                <form action="/links" method="post">
+                <form action="/affillinks" method="post">
                     <span>
                         <label for="limit">Rows per page</label>
                         <select name="limit" id="limit" required>
@@ -102,7 +102,7 @@
                             <th>AFFILIATED WITH: <br> NONE</th>
                         </tr>
                     </thead>
-                    <tbody style="font-family: Arial; font-size: 7pt;">
+                    <tbody style="font-family: Arial; font-size: 9pt;">
                         <% for (let iCount=0; iCount < db.length; iCount++) { %>
                             <tr style="border-bottom: 1px solid #000;">
                                 <td>
