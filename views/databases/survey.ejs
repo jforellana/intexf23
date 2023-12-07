@@ -78,10 +78,10 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item" id="create"><a class="nav-link" href="/createAccount">Create Account</a></li>
-          <li class="nav-item"><a class="nav-link" href="#dashboard">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#dashboard">Dashboard</a></li>
           <li class="nav-item"><a class="nav-link" href="/survey">Survey</a></li>
           <li class="nav-item"><a class="nav-link" href="/database">Database</a></li>
-          <li class="nav-item"><a class="nav-link" href="#bagongkwan">More</a></li>
+          <li class="nav-item"><a class="nav-link" href="#alternatives">More</a></li>
           <li class="nav-item" onclick="logout()"><a class="nav-link" href="/login" id="login">Login</a></li>
           <li class="nav-item" id="modify"><a class="nav-link" href="/modify"><i class="fas fa-user"></i></a>
           </li>
@@ -91,51 +91,51 @@
   </nav>
   <section class="projects-section mx-2">
     <div class="row text-center">
-        <div class="col-1"></div>
-        <div class="col-10 text-center whytho1">
-            <h2 id="mhi"><b>Mental Health Information</b></h2>
-            <button class="btn btn-sm btn-secondary" href="/selectdb">Back</button>
-        </div>
-        <div class="col-1"></div>
+      <div class="col-1"></div>
+      <div class="col-10 text-center whytho1">
+        <h2 id="mhi"><b>Mental Health Information</b></h2>
+        <button class="btn btn-sm btn-secondary" href="/selectdb">Back</button>
+      </div>
+      <div class="col-1"></div>
     </div>
     <div class="row">
-        <div class="col-1">
-        </div>
-        <div class="col-10 mx-4 my-5 whytho2">
-          <div>
-            <form action="/database" method="post">
-              <label for="limit">Rows per page</label>
-              <select name="limit" id="limit" required>
-                  <option value="" disabled selected>- select -</option>
-                  <option value="5">5</option>
-                  <option value="10">10</option>
-                  <option value="50">50</option>
-                  <option value="100">100</option>
+      <div class="col-1">
+      </div>
+      <div class="col-10 mx-4 my-5 whytho2">
+        <div>
+          <form action="/database" method="post">
+            <label for="limit">Rows per page</label>
+            <select name="limit" id="limit" required>
+              <option value="" disabled selected>- select -</option>
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+            </select>
+            <br>
+            <% let pagecount=rows/pagelimit; %>
+              <label for="page">Jump to page</label>
+              <select name="page" id="page">
+                <% for (let i=1; i < pagecount; i++) {%>
+                  <option>
+                    <%= i %>
+                  </option>
+                  <% } %>
               </select>
-              <br>
-              <% let pagecount=rows/pagelimit; %>
-                  <label for="page">Jump to page</label>
-                  <select name="page" id="page">
-                  <% for (let i=1; i < pagecount; i++) {%>
-                      <option>
-                      <%= i %>
-                      </option>
-                      <% } %>
-                  </select>
-                  <!-- <label for="page">jump to page</label> <input name="page" type="number" placeholder="enter page number"> -->
-                  <button type="submit">Update</button>
-            </form>
-            <form class="py-4" action="/surveyfilterid" method="post">
-              <label for="idfilter">Filter By Survey ID:</label>
-              <input type="number" name="idfilter" id="idfilter" placeholder="Survey ID Number" min="1" required>
-              <button type="submit">Search</button>
-            </form>
-            <br><br>
-            <div class="row">
+              <!-- <label for="page">jump to page</label> <input name="page" type="number" placeholder="enter page number"> -->
+              <button type="submit">Update</button>
+          </form>
+          <form class="py-4" action="/surveyfilterid" method="post">
+            <label for="idfilter">Filter By Survey ID:</label>
+            <input type="number" name="idfilter" id="idfilter" placeholder="Survey ID Number" min="1" required>
+            <button type="submit">Search</button>
+          </form>
+          <br><br>
+          <div class="row">
             <div class="col-auto mx-2">
-                <table style="background-color: antiquewhite; border: 1px solid black;">
+              <table style="background-color: antiquewhite; border: 1px solid black;">
                 <thead style="background-color: cornflowerblue; color: white;">
-                    <tr>
+                  <tr>
                     <th style="text-align: left;">ID</th>
                     <th style="text-align: left;">TIMESTAMP</th>
                     <th style="text-align: left;">AGE</th>
@@ -157,86 +157,86 @@
                     <th style="text-align: left;">FEEL DEPRESSED <br> OR DOWN</th>
                     <th style="text-align: left;">INTERESTS FLUCTUATE</th>
                     <th style="text-align: left;">SLEEP ISSUES</th>
-                    </tr>
+                  </tr>
                 </thead>
                 <tbody style="font-family: Arial; font-size: 9pt;">
-                    <% for (let iCount=0; iCount < db.length; iCount++) { %>
+                  <% for (let iCount=0; iCount < db.length; iCount++) { %>
                     <tr>
-                        <td>
+                      <td>
                         <%= db[iCount].unique_id %>
-                        </td>
-                        <td>
+                      </td>
+                      <td>
                         <%= db[iCount].timestamp %>
-                        </td>
-                        <td>
+                      </td>
+                      <td>
                         <%= db[iCount].age %>
-                        </td>
-                        <td>
+                      </td>
+                      <td>
                         <%= db[iCount].gender %>
-                        </td>
-                        <td>
+                      </td>
+                      <td>
                         <%= db[iCount].rel_status %>
-                        </td>
-                        <td>
+                      </td>
+                      <td>
                         <%= db[iCount].occ_status %>
-                        </td>
-                        <td>
+                      </td>
+                      <td>
                         <%= db[iCount].location %>
-                        </td>
-                        <td>
+                      </td>
+                      <td>
                         <%= db[iCount].social_media_usage %>
-                        </td>
-                        <td>
+                      </td>
+                      <td>
                         <%= db[iCount].avg_time_social %>
-                        </td>
-                        <td>
+                      </td>
+                      <td>
                         <%= db[iCount].use_no_purpose %>
-                        </td>
-                        <td>
+                      </td>
+                      <td>
                         <%= db[iCount].distracted_social %>
-                        </td>
-                        <td>
+                      </td>
+                      <td>
                         <%= db[iCount].restless_no_media %>
-                        </td>
-                        <td>
+                      </td>
+                      <td>
                         <%= db[iCount].distracted_general %>
-                        </td>
-                        <td>
+                      </td>
+                      <td>
                         <%= db[iCount].bothered_worries %>
-                        </td>
-                        <td>
+                      </td>
+                      <td>
                         <%= db[iCount].difficult_concentrated %>
-                        </td>
-                        <td>
+                      </td>
+                      <td>
                         <%= db[iCount].compare_successful %>
-                        </td>
-                        <td>
+                      </td>
+                      <td>
                         <%= db[iCount].feeling_comparison %>
-                        </td>
-                        <td>
+                      </td>
+                      <td>
                         <%= db[iCount].validation_social %>
-                        </td>
-                        <td>
+                      </td>
+                      <td>
                         <%= db[iCount].depressed_down %>
-                        </td>
-                        <td>
+                      </td>
+                      <td>
                         <%= db[iCount].fluctuate_interests %>
-                        </td>
-                        <td>
+                      </td>
+                      <td>
                         <%= db[iCount].sleep_issues %>
-                        </td>
-                        <td style="text-align: center;">
-                        </td>
+                      </td>
+                      <td style="text-align: center;">
+                      </td>
                     </tr>
                     <% } %>
                 </tbody>
-                </table>
-            </div>
+              </table>
             </div>
           </div>
         </div>
-        <div class="col-1">
-        </div>
+      </div>
+      <div class="col-1">
+      </div>
     </div>
   </section>
   <br><br>
