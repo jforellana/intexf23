@@ -7,6 +7,27 @@
       localStorage.setItem("loggedin", 'False');
       window.location.replace("/");
     }
+    function myFunction() {
+      // Declare variables
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -81,28 +102,33 @@
         <div class="col-1">
         </div>
         <div class="col-10 mx-4 my-5 whytho2">
-        <div>
+          <div>
             <form action="/database" method="post">
-            <label for="limit">rows per page</label>
-            <select name="limit" id="limit" required>
-                <option value="" disabled selected>- select -</option>
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-            </select>
-            <br>
-            <% let pagecount=rows/pagelimit; %>
-                <label for="page">jump to page</label>
-                <select name="page" id="page">
-                <% for (let i=1; i < pagecount; i++) {%>
-                    <option>
-                    <%= i %>
-                    </option>
-                    <% } %>
-                </select>
-                <!-- <label for="page">jump to page</label> <input name="page" type="number" placeholder="enter page number"> -->
-                <button type="submit">update</button>
+              <label for="limit">Rows per page</label>
+              <select name="limit" id="limit" required>
+                  <option value="" disabled selected>- select -</option>
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+              </select>
+              <br>
+              <% let pagecount=rows/pagelimit; %>
+                  <label for="page">Jump to page</label>
+                  <select name="page" id="page">
+                  <% for (let i=1; i < pagecount; i++) {%>
+                      <option>
+                      <%= i %>
+                      </option>
+                      <% } %>
+                  </select>
+                  <!-- <label for="page">jump to page</label> <input name="page" type="number" placeholder="enter page number"> -->
+                  <button type="submit">Update</button>
+            </form>
+            <form class="py-4" action="/surveyfilterid" method="post">
+              <label for="idfilter">Filter By Survey ID:</label>
+              <input type="number" name="idfilter" id="idfilter" placeholder="Survey ID Number" min="1" required>
+              <button type="submit">Search</button>
             </form>
             <br><br>
             <div class="row">
@@ -207,7 +233,7 @@
                 </table>
             </div>
             </div>
-        </div>
+          </div>
         </div>
         <div class="col-1">
         </div>
@@ -221,10 +247,10 @@
       document.getElementById("create").style.visibility = "visible";
       document.getElementById("modify").style.visibility = "hidden";
     }
-    else {
-      window.location.replace("/login");
-      alert("You do not have the necessary access to view this page. Please contact your administrator if you think this is a mistake.");
-    }
+    // else {
+    //   window.location.replace("/login");
+    //   alert("You do not have the necessary access to view this page. Please contact your administrator if you think this is a mistake.");
+    // }
 
     // function countofpages(rows)
     // {

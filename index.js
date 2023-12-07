@@ -134,7 +134,17 @@ app.post("/database", async (req, res) => {
     query.then(db => {
         res.render('databases/survey', {db:db, rows:rowCount, pagelimit:pagelimit});
     })
-})
+});
+
+app.post("/surveyfilterid", async (req, res) => {
+  let idfilter = req.body.idfilter
+
+  let query = knex.select().from('survey2').where('id', idfilter)
+  query.toString();
+    query.then(db => {
+        res.render('databases/survey', {db:db});
+    })
+});
 
 app.post('/links', (req, res) => {
     let perpage = req.body.limit || 5;
@@ -148,7 +158,17 @@ app.post('/links', (req, res) => {
     query.then(db => {
         res.render('databases/linking', {db:db});
     })
-})
+});
+
+app.post("/linksfilterid", async (req, res) => {
+  let idfilter = req.body.idfilter
+
+  let query = knex.select().from('survey2').where('id', idfilter)
+  query.toString();
+    query.then(db => {
+        res.render('databases/linking', {db:db});
+    })
+});
 
 app.get("/createAccount", (req, res) => {
   res.render("createAccount");

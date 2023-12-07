@@ -52,30 +52,35 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-1">
-            </div>
-            <div class="col-2 my-5">
+            <div class="col-1 my-5 mx-3">
                 <span>
                     <button class="btn btn-sm btn-secondary" href="/selectdb">Back</button>
                 </span>
             </div>
-            <div class="col-8 mx-4 my-5">
+            <div class="col-6 mx-4 my-5">
                 <form action="/links" method="post">
-                    <label for="limit">Rows per page</label>
-                    <select name="limit" id="limit" required>
-                        <option value="" disabled selected>- select -</option>
-                        <option value="5">5</option>
-                        <option value="10">10</option>
-                        <option value="50">50</option>
-                        <option value="100">100</option>
-                    </select>
-                    <span class="mx-4">
-                        <label for="page">Jump to page</label><input name="page" type="number" placeholder="enter page number">
-                    </span>
                     <span>
+                        <label for="limit">Rows per page</label>
+                        <select name="limit" id="limit" required>
+                            <option value="" disabled selected>- select -</option>
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select>
+                    </span>
+                    <span class="mx-3">
+                        <label for="page">Jump to page:</label><input name="page" type="number" placeholder="enter page number">
                         <button class="btn btn-sm btn-secondary" type="submit">Update</button>
                     </span>
                 </form>
+            </div>
+            <div class="col-4 mx-0 my-4">
+                <form class="py-4" action="/linksfilterid" method="post">
+                    <label for="idfilter">Filter:</label>
+                    <input type="number" name="idfilter" id="idfilter" placeholder="Survey ID Number" min="1" required>
+                    <button class="btn btn-sm btn-secondary" type="submit">Search</button>
+                  </form>
             </div>
             <div class="col-1">
             </div>
@@ -138,10 +143,16 @@
             document.getElementById("create").style.visibility = "visible";
             document.getElementById("modify").style.visibility = "hidden";
         }
-        else {
-            window.location.replace("/login");
-            alert("You do not have the necessary access to view this page. Please contact your administrator if you think this is a mistake.")
+        else if ((localStorage.getItem("loggedin") == 'True') && (localStorage.getItem("admin") == 'False')) {
+            document.getElementById("login").href = "#";
+            document.getElementById("login").innerHTML = "Logout";
+            document.getElementById("create").style.visibility = "hidden";
+            document.getElementById("modify").style.visibility = "visible";
         }
+        // else {
+        //     window.location.replace("/login");
+        //     alert("You do not have the necessary access to view this page. Please contact your administrator if you think this is a mistake.")
+        // }
 
     </script>
 </body>
