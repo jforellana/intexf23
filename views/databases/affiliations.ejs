@@ -140,12 +140,14 @@
             document.getElementById("login").innerHTML = "Logout";
             document.getElementById("create").style.visibility = "visible";
             document.getElementById("modify").style.visibility = "hidden";
+            document.getElementById("selectdb").style.visibility = "visible";
         }
         else if ((localStorage.getItem("loggedin") == 'True') && (localStorage.getItem("admin") == 'False')) {
             document.getElementById("login").href = "#";
             document.getElementById("login").innerHTML = "Logout";
             document.getElementById("create").style.visibility = "hidden";
             document.getElementById("modify").style.visibility = "visible";
+            document.getElementById("selectdb").style.visibility = "visible";
         }
         else {
             window.location.replace("/login");

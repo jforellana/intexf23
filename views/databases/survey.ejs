@@ -246,24 +246,19 @@
       document.getElementById("login").innerHTML = "Logout";
       document.getElementById("create").style.visibility = "visible";
       document.getElementById("modify").style.visibility = "hidden";
+      document.getElementById("selectdb").style.visibility = "visible";
     }
     else if ((localStorage.getItem("loggedin") == 'True') && (localStorage.getItem("admin") == 'False')) {
       document.getElementById("login").href = "#";
       document.getElementById("login").innerHTML = "Logout";
       document.getElementById("create").style.visibility = "hidden";
       document.getElementById("modify").style.visibility = "visible";
+      document.getElementById("selectdb").style.visibility = "visible";
     }
     else {
       window.location.replace("/login");
       alert("You do not have the necessary access to view this page. Please contact your administrator if you think this is a mistake.")
     }
-
-    // function countofpages(rows)
-    // {
-    //   let limits = document.getElementById('limit').value;
-    //   let pc = rows / limits;
-    //   return pc;
-    // }
   </script>
 </body>
 
