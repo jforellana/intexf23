@@ -169,11 +169,18 @@ app.post('/links', (req, res) => {
 
 app.post("/linksfilterid", async (req, res) => {
   let idfilter = req.body.idfilter
+  let pagelimit = req.body.limit || 5;
+  let page = req.body.page || 1;
+  if (page < 1) page = 1;
+  let offset = (page - 1) * pagelimit;
 
-  let query = knex.select().from('survey2').where('unique_id', idfilter)
+  const result = await knex('survey2').count('* as count');
+  let rowCount = result[0].count;
+
+  let query = knex.select().from('survey2').where('unique_id', idfilter).limit(pagelimit).offset(offset);
   query.toString();
     query.then(db => {
-        res.render('databases/linking', {db:db});
+        res.render('databases/linking', {db:db, rows:rowCount, pagelimit:pagelimit});
     })
 });
 
