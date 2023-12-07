@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Survey Summary</title>
-  <!-- Font Awesome icons (free version)-->
-  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-  <!-- Google fonts-->
-  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
-  <link
-      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-      rel="stylesheet" />
-  <!-- Core theme CSS (includes Bootstrap)-->
-  <link rel="stylesheet" href="css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Summary</title>
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body id="page-top">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg bg-black fixed-top" id="mainNav">
@@ -28,10 +30,10 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item" id="create"><a class="nav-link" href="/createAccount">Create Account</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#dashboard">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/#dashboard">Dashboard</a></li>
                     <li class="nav-item"><a class="nav-link" href="/survey">Survey</a></li>
                     <li class="nav-item"><a class="nav-link" href="/selectdb">Database</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/#bagongkwan">More</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/#alternatives">More</a></li>
                     <li class="nav-item" onclick="logout()"><a class="nav-link" href="/login" id="login">Login</a></li>
                     <li class="nav-item" id="modify"><a class="nav-link" href="/modify"><i class="fas fa-user"></i></a>
                     </li>
@@ -60,39 +62,57 @@
             </div>
             <div class="col-md-4 mb-3 mb-md-0">
                 <h3 class="fb-color">FACEBOOK</h3>
-                <p><span class="fb-color number"><%= fb%></span> survey respondents reported that they use Facebook</p>
+                <p><span class="fb-color number">
+                        <%= fb%>
+                    </span> survey respondents reported that they use Facebook</p>
             </div>
             <div class="col-md-4 mb-3 mb-md-0">
                 <h3 class="tw-color">TWITTER</h3>
-                <p><span class="tw-color number"><%= tw%></span> survey respondents reported that they use Twitter</p>
+                <p><span class="tw-color number">
+                        <%= tw%>
+                    </span> survey respondents reported that they use Twitter</p>
             </div>
             <div class="col-md-4 mb-3 mb-md-0">
                 <h3 class="ig-color">INSTAGRAM</h3>
-                <p><span class="ig-color number"><%= ig%></span> survey respondents reported that they use Instagram</p>
+                <p><span class="ig-color number">
+                        <%= ig%>
+                    </span> survey respondents reported that they use Instagram</p>
             </div>
             <div class="col-md-4 mb-3 mb-md-0">
                 <h3 class="dc-color">DISCORD</h3>
-                <p><span class="dc-color number"><%= dc%></span> survey respondents reported that they use Discord</p>
+                <p><span class="dc-color number">
+                        <%= dc%>
+                    </span> survey respondents reported that they use Discord</p>
             </div>
             <div class="col-md-4 mb-3 mb-md-0">
                 <h3 class="yt-color">YOUTUBE</h3>
-                <p><span class="yt-color number"><%= yt%></span> survey respondents reported that they use Youtube</p>
+                <p><span class="yt-color number">
+                        <%= yt%>
+                    </span> survey respondents reported that they use Youtube</p>
             </div>
             <div class="col-md-4 mb-3 mb-md-0">
                 <h3 class="re-color">REDDIT</h3>
-                <p><span class="re-color number"><%= re%></span> survey respondents reported that they use Reddit</p>
+                <p><span class="re-color number">
+                        <%= re%>
+                    </span> survey respondents reported that they use Reddit</p>
             </div>
             <div class="col-md-4 mb-3 mb-md-0">
                 <h3 class="pt-color">PINTEREST</h3>
-                <p><span class="pt-color number"><%= pt%></span> survey respondents reported that they use Pinterest</p>
+                <p><span class="pt-color number">
+                        <%= pt%>
+                    </span> survey respondents reported that they use Pinterest</p>
             </div>
             <div class="col-md-4 mb-3 mb-md-0">
                 <h3 class="sc-color">SNAPCHAT</h3>
-                <p><span class="sc-color number"><%= sc%></span> survey respondents reported that they use Snapchat</p>
+                <p><span class="sc-color number">
+                        <%= sc%>
+                    </span> survey respondents reported that they use Snapchat</p>
             </div>
             <div class="col-md-4 mb-3 mb-md-0">
                 <h3 class="tt-color">TIKTOK</h3>
-                <p><span class="tt-color number"><%= tt%></span> survey respondents reported that they use Tiktok</p>
+                <p><span class="tt-color number">
+                        <%= tt%>
+                    </span> survey respondents reported that they use Tiktok</p>
             </div>
         </div>
     </section>
@@ -116,4 +136,5 @@
 
     </script>
 </body>
+
 </html>
