@@ -119,9 +119,6 @@ app.post("/post-survey", (req, res) => {
       })
       .catch((error) => {
         console.error("Transaction error:", error);
-      })
-      .finally(() => {
-        knex.destroy();
       });
   });
 });
