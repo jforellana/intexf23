@@ -1,11 +1,11 @@
-# intexf23
-intex
+# INTEX PROJECT FOR GROUP 1-15 | FALL 2023
 
-Our Website: https://provomentalhealth.is404.net/
+| | |
+--- | ---
+WEBSITE | https://provomentalhealth.is404.net
+username | MainAdmin
+password | SomeCleverPassword
 
-Main account information:
-Username: MainAdmin
-Password: SomeCleverPassword
 
 Our main page shows the dashboard (with a link to direct you there more quickly), along with a link to take the survey. We also have a section for alternative activities to social media.
 

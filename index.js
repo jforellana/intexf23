@@ -1,4 +1,14 @@
+// Project for group 1-15
+// Group Members:
+// Abby Harris
+// Adam Lyons
+// Ian Purnell
+// Juan Orellana
+
+
+// import dependencies
 const { count } = require("console");
+const { hasSubscribers } = require("diagnostics_channel");
 const express = require("express");
 let app = express();
 let path = require("path");
@@ -9,6 +19,7 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
+// initiate connection to AWS RDS database or local postgres server
 const knex = require("knex")({
   client: "pg",
   connection: {
@@ -21,10 +32,14 @@ const knex = require("knex")({
   },
 });
 
+// paths to navigate our website
+
+// landing page
 app.get("/", (req, res) => {
   res.render("index");
 });
 
+// survey table
 app.get("/database", async (req, res) => {
   let query = knex.select().from("survey2");
   query.toString();
@@ -35,22 +50,27 @@ app.get("/database", async (req, res) => {
   });
 });
 
+
+// actual survey
 app.get("/survey", (req, res) => {
   res.render("survey");
 });
 
+
+// affiliations table
 app.get("/affiliations", async (req, res) => {
   let query = knex
     .select()
     .from("plat_affil")
     .orderBy("id");
   query.toString();
-
   query.then((db) => {
     res.render("databases/affiliations", { db: db });
   });
 });
 
+
+// platforms table
 app.get("/platforms", async (req, res) => {
   let query = knex
     .select()
@@ -63,10 +83,14 @@ app.get("/platforms", async (req, res) => {
   });
 });
 
+
+// login table
 app.get("/login", (req, res) => {
   res.render("login");
 });
 
+
+// insert survey responsed into the survey2 and plat_affil tables
 app.post("/post-survey", (req, res) => {
   knex.transaction(async (trx) => {
     const [id] = await trx("survey2")
@@ -123,6 +147,8 @@ app.post("/post-survey", (req, res) => {
   });
 });
 
+
+// not using this
 app.post("/database", async (req, res) => {
   let query = knex.select().from("survey2");
   query.toString();
@@ -133,6 +159,8 @@ app.post("/database", async (req, res) => {
   });
 });
 
+
+// not using this 
 app.post("/affillinks", async (req, res) => {
   let query = knex.select().from("plat_affil");
   query.toString();
@@ -143,6 +171,8 @@ app.post("/affillinks", async (req, res) => {
   });
 });
 
+
+// not using this
 app.post("/platlinks", async (req, res) => {
   let query = knex.select().from("plat_affil");
   query.toString();
@@ -153,6 +183,8 @@ app.post("/platlinks", async (req, res) => {
   });
 });
 
+
+// not using this
 app.post("/surveyfilterid", async (req, res) => {
   let query = knex
     .select()
@@ -166,6 +198,8 @@ app.post("/surveyfilterid", async (req, res) => {
   });
 });
 
+
+// not using this
 app.post("/affiliations", (req, res) => {
   let query = knex
     .select()
@@ -178,6 +212,8 @@ app.post("/affiliations", (req, res) => {
   });
 });
 
+
+// not using this
 app.post("/linksfilterid", async (req, res) => {
   let query = knex
     .select()
@@ -191,6 +227,8 @@ app.post("/linksfilterid", async (req, res) => {
   });
 });
 
+
+// not using this
 app.post("/platforms", (req, res) => {
   let query = knex
     .select()
@@ -203,6 +241,8 @@ app.post("/platforms", (req, res) => {
   });
 });
 
+
+// not using htis
 app.post("/platfilterid", async (req, res) => {
   let query = knex
     .select()
@@ -216,22 +256,32 @@ app.post("/platfilterid", async (req, res) => {
   });
 });
 
+
+// create account view
 app.get("/createAccount", (req, res) => {
   res.render("createAccount");
 });
 
+
+// modify an account view
 app.get("/modify", (req, res) => {
   res.render("modify");
 });
 
+
+// view to choose which table to view
 app.get("/selectdb", (req, res) => {
   res.render("selectdb");
 });
 
+
+// survey finished message view
 app.get("/finishedSurvey", (req, res) => {
   res.render("finishedSurvey");
 });
 
+
+// summary view
 app.get("/summary", async (req, res) => {
   let fb_q = await knex("plat_affil").count("pl_fb").where("pl_fb", 1);
   fb_q.toString();
@@ -312,4 +362,6 @@ app.get("/summary", async (req, res) => {
   });
 });
 
+
+// app is listening
 app.listen(port, () => console.log("Intex is listening"));
