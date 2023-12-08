@@ -116,6 +116,40 @@
             </div>
         </div>
     </section>
+    <br><br><br>
+    <section class="project-section bg-white">
+        <div class="row">
+            <div class="row">
+                <div class="text-center">
+                    <h2 id="database"><b>affiliations</b></h2>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3 mb-md-0">
+                <h3>UNIVERSITY</h3>
+                <p><span class="number"><%= univ%></span> survey respondents reported that they are affiliated to a university</p>
+            </div>
+            <div class="col-md-4 mb-3 mb-md-0">
+                <h3>PRIVATE</h3>
+                <p><span class="number"><%= priv%></span> survey respondents reported that they are affiliated to private</p>
+            </div>
+            <div class="col-md-4 mb-3 mb-md-0">
+                <h3>SCHOOL</h3>
+                <p><span class="number"><%= sch%></span> survey respondents reported that they are affiliated to a school</p>
+            </div>
+            <div class="col-md-4 mb-3 mb-md-0">
+                <h3>COMPANY</h3>
+                <p><span class="number"><%= comp%></span> survey respondents reported that they are affiliated to company</p>
+            </div>
+            <div class="col-md-4 mb-3 mb-md-0">
+                <h3>GOVERNMENT</h3>
+                <p><span class="number"><%= gov%></span> survey respondents reported that they are affiliated to a government</p>
+            </div>
+            <div class="col-md-4 mb-3 mb-md-0">
+                <h3>NONE</h3>
+                <p><span class="number"><%= none%></span> survey respondents reported that they do not have an affiliation</p>
+            </div>
+        </div>
+    </section>
     <script>
         if ((localStorage.getItem("loggedin") == 'True') && (localStorage.getItem("admin") == 'True')) {
             document.getElementById("login").href = "#";

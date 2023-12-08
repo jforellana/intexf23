@@ -26,17 +26,11 @@ app.get("/", (req, res) => {
 });
 
 app.get("/database", async (req, res) => {
-  let pagelimit = req.body.limit || 10;
-  const result = await knex("survey2").count("* as count");
-  let rowCount = result[0].count;
-
-  let query = knex.select().from("survey2").limit(pagelimit);
+  let query = knex.select().from("survey2");
   query.toString();
   query.then((db) => {
     res.render("databases/survey", {
-      db: db,
-      rows: rowCount,
-      pagelimit: pagelimit,
+      db: db
     });
   });
 });
@@ -46,17 +40,10 @@ app.get("/survey", (req, res) => {
 });
 
 app.get("/affiliations", async (req, res) => {
-  let pagelimit = req.body.limit || 10;
-  let page = req.body.page || 1;
-  if (page < 1) page = 1;
-  let offset = (page - 1) * pagelimit;
-
   let query = knex
     .select()
     .from("plat_affil")
-    .orderBy("id")
-    .limit(pagelimit)
-    .offset(offset);
+    .orderBy("id");
   query.toString();
 
   query.then((db) => {
@@ -65,17 +52,10 @@ app.get("/affiliations", async (req, res) => {
 });
 
 app.get("/platforms", async (req, res) => {
-  let pagelimit = req.body.limit || 10;
-  let page = req.body.page || 1;
-  if (page < 1) page = 1;
-  let offset = (page - 1) * pagelimit;
-
   let query = knex
     .select()
     .from("plat_affil")
-    .orderBy("id")
-    .limit(pagelimit)
-    .offset(offset);
+    .orderBy("id");
   query.toString();
 
   query.then((db) => {
@@ -147,103 +127,53 @@ app.post("/post-survey", (req, res) => {
 });
 
 app.post("/database", async (req, res) => {
-  let pagelimit = req.body.limit || 5;
-  let page = req.body.page || 1;
-  if (page < 1) page = 1;
-  let offset = (page - 1) * pagelimit;
-
-  const result = await knex("survey2").count("* as count");
-  let rowCount = result[0].count;
-
-  let query = knex.select().from("survey2").limit(pagelimit).offset(offset);
+  let query = knex.select().from("survey2");
   query.toString();
   query.then((db) => {
     res.render("databases/survey", {
-      db: db,
-      rows: rowCount,
-      pagelimit: pagelimit,
+      db: db
     });
   });
 });
 
 app.post("/affillinks", async (req, res) => {
-  let pagelimit = req.body.limit || 5;
-  let page = req.body.page || 1;
-  if (page < 1) page = 1;
-  let offset = (page - 1) * pagelimit;
-
-  const result = await knex("plat_affil").count("* as count");
-  let rowCount = result[0].count;
-
-  let query = knex.select().from("plat_affil").limit(pagelimit).offset(offset);
+  let query = knex.select().from("plat_affil");
   query.toString();
   query.then((db) => {
     res.render("databases/affiliations", {
-      db: db,
-      rows: rowCount,
-      pagelimit: pagelimit,
+      db: db
     });
   });
 });
 
 app.post("/platlinks", async (req, res) => {
-  let pagelimit = req.body.limit || 5;
-  let page = req.body.page || 1;
-  if (page < 1) page = 1;
-  let offset = (page - 1) * pagelimit;
-
-  const result = await knex("plat_affil").count("* as count");
-  let rowCount = result[0].count;
-
-  let query = knex.select().from("plat_affil").limit(pagelimit).offset(offset);
+  let query = knex.select().from("plat_affil");
   query.toString();
   query.then((db) => {
     res.render("databases/platforms", {
-      db: db,
-      rows: rowCount,
-      pagelimit: pagelimit,
+      db: db
     });
   });
 });
 
 app.post("/surveyfilterid", async (req, res) => {
-  let idfilter = req.body.idfilter;
-  let pagelimit = req.body.limit || 5;
-  let page = req.body.page || 1;
-  if (page < 1) page = 1;
-  let offset = (page - 1) * pagelimit;
-
-  const result = await knex("survey2").count("* as count");
-  let rowCount = result[0].count;
-
   let query = knex
     .select()
     .from("survey2")
-    .where("unique_id", idfilter)
-    .limit(pagelimit)
-    .offset(offset);
+    .where("unique_id", idfilter);
   query.toString();
   query.then((db) => {
     res.render("databases/survey", {
-      db: db,
-      rows: rowCount,
-      pagelimit: pagelimit,
+      db: db
     });
   });
 });
 
 app.post("/affiliations", (req, res) => {
-  let perpage = req.body.limit || 5;
-  let page = req.body.page || 1;
-  if (page < 1) page = 1;
-  let offset = (page - 1) * perpage;
-
   let query = knex
     .select()
     .from("plat_affil")
-    .orderBy("id")
-    .limit(perpage)
-    .offset(offset);
+    .orderBy("id");
   query.toString();
 
   query.then((db) => {
@@ -252,43 +182,23 @@ app.post("/affiliations", (req, res) => {
 });
 
 app.post("/linksfilterid", async (req, res) => {
-  let idfilter = req.body.idfilter;
-  let pagelimit = req.body.limit || 5;
-  let page = req.body.page || 1;
-  if (page < 1) page = 1;
-  let offset = (page - 1) * pagelimit;
-
-  const result = await knex("plat_affil").count("* as count");
-  let rowCount = result[0].count;
-
   let query = knex
     .select()
     .from("plat_affil")
-    .where("id", idfilter)
-    .limit(pagelimit)
-    .offset(offset);
+    .where("id", idfilter);
   query.toString();
   query.then((db) => {
     res.render("databases/affiliations", {
-      db: db,
-      rows: rowCount,
-      pagelimit: pagelimit,
+      db: db
     });
   });
 });
 
 app.post("/platforms", (req, res) => {
-  let perpage = req.body.limit || 5;
-  let page = req.body.page || 1;
-  if (page < 1) page = 1;
-  let offset = (page - 1) * perpage;
-
   let query = knex
     .select()
     .from("plat_affil")
-    .orderBy("id")
-    .limit(perpage)
-    .offset(offset);
+    .orderBy("id");
   query.toString();
 
   query.then((db) => {
@@ -297,27 +207,14 @@ app.post("/platforms", (req, res) => {
 });
 
 app.post("/platfilterid", async (req, res) => {
-  let idfilter = req.body.idfilter;
-  let pagelimit = req.body.limit || 5;
-  let page = req.body.page || 1;
-  if (page < 1) page = 1;
-  let offset = (page - 1) * pagelimit;
-
-  const result = await knex("plat_affil").count("* as count");
-  let rowCount = result[0].count;
-
   let query = knex
     .select()
     .from("plat_affil")
-    .where("id", idfilter)
-    .limit(pagelimit)
-    .offset(offset);
+    .where("id", idfilter);
   query.toString();
   query.then((db) => {
     res.render("databases/platforms", {
-      db: db,
-      rows: rowCount,
-      pagelimit: pagelimit,
+      db: db
     });
   });
 });
@@ -375,6 +272,30 @@ app.get("/summary", async (req, res) => {
   tt_q.toString();
   let tt = tt_q[0].count;
 
+  let univ_q = await knex("plat_affil").count("ao_uv").where("ao_uv", 1);
+  univ_q.toString();
+  let univ = univ_q[0].count;
+
+  let priv_q = await knex("plat_affil").count("ao_pr").where("ao_pr", 1);
+  priv_q.toString();
+  let priv = priv_q[0].count;
+
+  let comp_q = await knex("plat_affil").count("ao_co").where("ao_co", 1);
+  comp_q.toString();
+  let comp = comp_q[0].count;
+
+  let gov_q = await knex("plat_affil").count("ao_gt").where("ao_gt", 1);
+  gov_q.toString();
+  let gov = gov_q[0].count;
+
+  let none_q = await knex("plat_affil").count("ao_na").where("ao_na", 1);
+  none_q.toString();
+  let none = none_q[0].count;
+
+  let sch_q = await knex("plat_affil").count("ao_sc").where("ao_sc", 1);
+  sch_q.toString();
+  let sch = sch_q[0].count;
+
   res.render("databases/summary", {
     fb: fb,
     tw: tw,
@@ -385,6 +306,12 @@ app.get("/summary", async (req, res) => {
     pt: pt,
     sc: sc,
     tt: tt,
+    univ:univ,
+    priv:priv,
+    comp:comp,
+    gov:gov,
+    none:none,
+    sch:sch
   });
 });
 

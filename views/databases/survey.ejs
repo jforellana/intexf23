@@ -32,36 +32,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
-  <!-- Font Awesome icons (free version)-->
-  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-  <!-- Google fonts-->
-  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
-  <link
-    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-    rel="stylesheet" />
-  <!-- Core theme CSS (includes Bootstrap)-->
-  <link rel="stylesheet" href="css/styles.css">
-  <style>
-    body {
-      background: linear-gradient(to bottom,
-          rgba(0, 0, 0, 0.3) 0%,
-          rgba(0, 0, 0, 0.7) 75%,
-          #000 100%);
-      background-position: center;
-      background-repeat: repeat;
-      background-attachment: scroll;
-      background-size: cover;
-    }
-
-    .whytho1 {
-      margin-top: 100px;
-    }
-
-    .whytho2 {
-      margin-top: -100px;
-    }
-  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
+  <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
 </head>
 
 <body>
@@ -97,68 +70,42 @@
       </div>
       <div class="col-1"></div>
     </div>
+  </section>
     <div class="row">
       <div class="col-1">
       </div>
       <div class="col-10 mx-4 my-5 whytho2">
         <div>
-          <form action="/database" method="post">
-            <label for="limit">Rows per page</label>
-            <select name="limit" id="limit" required>
-              <option value="" disabled selected>- select -</option>
-              <option value="5">5</option>
-              <option value="10">10</option>
-              <option value="50">50</option>
-              <option value="100">100</option>
-            </select>
-            <br>
-            <% let pagecount=rows/pagelimit; %>
-              <label for="page">Jump to page</label>
-              <select name="page" id="page">
-                <% for (let i=1; i < pagecount; i++) {%>
-                  <option>
-                    <%= i %>
-                  </option>
-                  <% } %>
-              </select>
-              <!-- <label for="page">jump to page</label> <input name="page" type="number" placeholder="enter page number"> -->
-              <button type="submit">Update</button>
-          </form>
-          <form class="py-4" action="/surveyfilterid" method="post">
-            <label for="idfilter">Filter By Survey ID:</label>
-            <input type="number" name="idfilter" id="idfilter" placeholder="Survey ID Number" min="1" required>
-            <button type="submit">Search</button>
-          </form>
           <br><br>
           <div class="row">
             <div class="col-auto mx-2">
-              <table style="background-color: antiquewhite; border: 1px solid black;">
-                <thead style="background-color: cornflowerblue; color: white;">
+              <table id="myTable" class="display">
+                <thead>
                   <tr>
-                    <th style="text-align: left;">ID</th>
-                    <th style="text-align: left;">TIMESTAMP</th>
-                    <th style="text-align: left;">AGE</th>
-                    <th style="text-align: left;">GENDER</th>
-                    <th style="text-align: left;">RELATIONSHIP STATUS</th>
-                    <th style="text-align: left;">OCCUPATION STATUS</th>
-                    <th style="text-align: left;">LOCATION</th>
-                    <th style="text-align: left;">USE OF SOCIAL MEDIA</th>
-                    <th style="text-align: left;">AVERAGE TIME/DAY</th>
-                    <th style="text-align: left;">NO SPECIFIC PURPOSE</th>
-                    <th style="text-align: left;">DISTRACTED BY SOCIAL MEDIA</th>
-                    <th style="text-align: left;">RESTLESS WITHOUT <br> SOCIAL MEDIA</th>
-                    <th style="text-align: left;">DISTRACTED IN GENERAL</th>
-                    <th style="text-align: left;">BOTHERED BY WORRIES</th>
-                    <th style="text-align: left;">DIFFICULT TO CONCENTRATE</th>
-                    <th style="text-align: left;">COMPARE TO <br> SUCCESSFUL PEOPLE</th>
-                    <th style="text-align: left;">FEELINGS ABOUT COMPARISONS</th>
-                    <th style="text-align: left;">SOCIAL VALIDATION</th>
-                    <th style="text-align: left;">FEEL DEPRESSED <br> OR DOWN</th>
-                    <th style="text-align: left;">INTERESTS FLUCTUATE</th>
-                    <th style="text-align: left;">SLEEP ISSUES</th>
+                    <th>ID</th>
+                    <th>TIMESTAMP</th>
+                    <th>AGE</th>
+                    <th>GENDER</th>
+                    <th>RELATIONSHIP STATUS</th>
+                    <th>OCCUPATION STATUS</th>
+                    <th>LOCATION</th>
+                    <th>USE OF SOCIAL MEDIA</th>
+                    <th>AVERAGE TIME/DAY</th>
+                    <th>NO SPECIFIC PURPOSE</th>
+                    <th>DISTRACTED BY SOCIAL MEDIA</th>
+                    <th>RESTLESS WITHOUT <br> SOCIAL MEDIA</th>
+                    <th>DISTRACTED IN GENERAL</th>
+                    <th>BOTHERED BY WORRIES</th>
+                    <th>DIFFICULT TO CONCENTRATE</th>
+                    <th>COMPARE TO <br> SUCCESSFUL PEOPLE</th>
+                    <th>FEELINGS ABOUT COMPARISONS</th>
+                    <th>SOCIAL VALIDATION</th>
+                    <th>FEEL DEPRESSED <br> OR DOWN</th>
+                    <th>INTERESTS FLUCTUATE</th>
+                    <th>SLEEP ISSUES</th>
                   </tr>
                 </thead>
-                <tbody style="font-family: Arial; font-size: 9pt;">
+                <tbody>
                   <% for (let iCount=0; iCount < db.length; iCount++) { %>
                     <tr>
                       <td>
@@ -224,8 +171,6 @@
                       <td>
                         <%= db[iCount].sleep_issues %>
                       </td>
-                      <td style="text-align: center;">
-                      </td>
                     </tr>
                     <% } %>
                 </tbody>
@@ -237,9 +182,11 @@
       <div class="col-1">
       </div>
     </div>
-  </section>
   <br><br>
   <script>
+    $(document).ready( function () {
+    $('#myTable').DataTable();
+    });
 
     if ((localStorage.getItem("loggedin") == 'True') && (localStorage.getItem("admin") == 'True')) {
       document.getElementById("login").href = "#";

@@ -11,15 +11,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- Font Awesome icons (free version)-->
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    <!-- Google fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
 </head>
 
 <body id="page-top">
@@ -58,39 +52,13 @@
                     <button class="btn btn-sm btn-secondary" href="/selectdb">Back</button>
                 </span>
             </div>
-            <div class="col-6 mx-4 my-5">
-                <form action="/platlinks" method="post">
-                    <span>
-                        <label for="limit">Rows per page</label>
-                        <select name="limit" id="limit" required>
-                            <option value="" disabled selected>- select -</option>
-                            <option value="5">5</option>
-                            <option value="10">10</option>
-                            <option value="50">50</option>
-                            <option value="100">100</option>
-                        </select>
-                    </span>
-                    <span class="mx-3">
-                        <label for="page">Jump to page:</label><input name="page" type="number"
-                            placeholder="enter page number">
-                        <button class="btn btn-sm btn-secondary" type="submit">Update</button>
-                    </span>
-                </form>
-            </div>
-            <div class="col-4 mx-0 my-4">
-                <form class="py-4" action="/platfilterid" method="post">
-                    <label for="idfilter">Filter:</label>
-                    <input type="number" name="idfilter" id="idfilter" placeholder="Survey ID Number" min="1" required>
-                    <button class="btn btn-sm btn-secondary" type="submit">Search</button>
-                </form>
-            </div>
             <div class="col-1">
             </div>
         </div>
         <div class="row">
             <div class="col-auto mx-2">
-                <table style="border-color: inherit; border-style: solid; border-width: 1;">
-                    <thead style="border: 1px solid #000;" class="text-center">
+                <table id="myTable" class="display">
+                    <thead>
                         <tr>
                             <th>ID</th>
                             <th>FACEBOOK</th>
@@ -104,9 +72,9 @@
                             <th>TIKTOK</th>
                         </tr>
                     </thead>
-                    <tbody style="font-family: Arial; font-size: 9pt;">
+                    <tbody>
                         <% for (let iCount=0; iCount < db.length; iCount++) { %>
-                            <tr style="border-bottom: 1px solid #000;">
+                            <tr>
                                 <td>
                                     <%= db[iCount].id %>
                                 </td>
@@ -147,6 +115,10 @@
         </div>
     </section>
     <script>
+        $(document).ready( function () {
+        $('#myTable').DataTable();
+        });
+
         if ((localStorage.getItem("loggedin") == 'True') && (localStorage.getItem("admin") == 'True')) {
             document.getElementById("login").href = "#";
             document.getElementById("login").innerHTML = "Logout";
