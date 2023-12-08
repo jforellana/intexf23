@@ -7248,6 +7248,18 @@ fieldset:disabled .btn {
   z-index: 1030;
 }
 
+.title-center
+{
+  padding: 2rem 0;
+  position: sticky;
+  top: 90px;
+  right: 10rem;
+  /* left: 0; */
+  z-index: 1030;
+  text-align: center !important;
+
+}
+
 .fixed-bottom {
   position: fixed;
   right: 0;
@@ -8664,6 +8676,12 @@ fieldset:disabled .btn {
   background-color: rgba(var(--bs-white-rgb), var(--bs-bg-opacity)) !important;
 }
 
+.bg-title
+{
+  --bs-bg-opacity: 1;
+  background-color: rgba(var(--bs-info-rgb), var(--bs-bg-opacity)) !important;
+
+}
 .bg-body {
   --bs-bg-opacity: 1;
   background-color: rgba(
@@ -11490,6 +11508,10 @@ body {
 .projects-section {
   padding: 10rem 0;
 }
+.upper-section{
+  padding: 10rem 0;
+}
+
 .projects-section .featured-text {
   padding: 2rem;
 }

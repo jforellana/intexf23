@@ -7,34 +7,30 @@
       localStorage.setItem("loggedin", 'False');
       window.location.replace("/");
     }
-    function myFunction() {
-      // Declare variables
-      var input, filter, table, tr, td, i, txtValue;
-      input = document.getElementById("myInput");
-      filter = input.value.toUpperCase();
-      table = document.getElementById("myTable");
-      tr = table.getElementsByTagName("tr");
-
-      // Loop through all table rows, and hide those who don't match the search query
-      for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[0];
-        if (td) {
-          txtValue = td.textContent || td.innerText;
-          if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            tr[i].style.display = "";
-          } else {
-            tr[i].style.display = "none";
-          }
-        }
-      }
-    }
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Survey Data - Demographics</title>
+  <!-- Font Awesome icons (free version)-->
+  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+  <!-- Google fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+  <link
+      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link rel="stylesheet" href="css/styles.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
   <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+  <style>
+    .horizontal-scroll {
+      overflow-x: auto;
+      white-space: nowrap;
+      width: 100%;
+      padding-top: 10rem;
+    }
+  </style>
 </head>
 
 <body>
@@ -61,128 +57,107 @@
       </div>
     </div>
   </nav>
-  <section class="projects-section mx-2">
-    <div class="row text-center">
-      <div class="col-1"></div>
-      <div class="col-10 text-center whytho1">
-        <h2 id="mhi"><b>Mental Health Information</b></h2>
-        <button class="btn btn-sm btn-secondary" href="/selectdb">Back</button>
-      </div>
-      <div class="col-1"></div>
-    </div>
-  </section>
-    <div class="row">
-      <div class="col-1">
-      </div>
-      <div class="col-10 mx-4 my-5 whytho2">
-        <div>
-          <br><br>
-          <div class="row">
-            <div class="col-auto mx-2">
-              <table id="myTable" class="display">
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>TIMESTAMP</th>
-                    <th>AGE</th>
-                    <th>GENDER</th>
-                    <th>RELATIONSHIP STATUS</th>
-                    <th>OCCUPATION STATUS</th>
-                    <th>LOCATION</th>
-                    <th>USE OF SOCIAL MEDIA</th>
-                    <th>AVERAGE TIME/DAY</th>
-                    <th>NO SPECIFIC PURPOSE</th>
-                    <th>DISTRACTED BY SOCIAL MEDIA</th>
-                    <th>RESTLESS WITHOUT <br> SOCIAL MEDIA</th>
-                    <th>DISTRACTED IN GENERAL</th>
-                    <th>BOTHERED BY WORRIES</th>
-                    <th>DIFFICULT TO CONCENTRATE</th>
-                    <th>COMPARE TO <br> SUCCESSFUL PEOPLE</th>
-                    <th>FEELINGS ABOUT COMPARISONS</th>
-                    <th>SOCIAL VALIDATION</th>
-                    <th>FEEL DEPRESSED <br> OR DOWN</th>
-                    <th>INTERESTS FLUCTUATE</th>
-                    <th>SLEEP ISSUES</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <% for (let iCount=0; iCount < db.length; iCount++) { %>
-                    <tr>
-                      <td>
-                        <%= db[iCount].unique_id %>
-                      </td>
-                      <td>
-                        <%= db[iCount].timestamp %>
-                      </td>
-                      <td>
-                        <%= db[iCount].age %>
-                      </td>
-                      <td>
-                        <%= db[iCount].gender %>
-                      </td>
-                      <td>
-                        <%= db[iCount].rel_status %>
-                      </td>
-                      <td>
-                        <%= db[iCount].occ_status %>
-                      </td>
-                      <td>
-                        <%= db[iCount].location %>
-                      </td>
-                      <td>
-                        <%= db[iCount].social_media_usage %>
-                      </td>
-                      <td>
-                        <%= db[iCount].avg_time_social %>
-                      </td>
-                      <td>
-                        <%= db[iCount].use_no_purpose %>
-                      </td>
-                      <td>
-                        <%= db[iCount].distracted_social %>
-                      </td>
-                      <td>
-                        <%= db[iCount].restless_no_media %>
-                      </td>
-                      <td>
-                        <%= db[iCount].distracted_general %>
-                      </td>
-                      <td>
-                        <%= db[iCount].bothered_worries %>
-                      </td>
-                      <td>
-                        <%= db[iCount].difficult_concentrated %>
-                      </td>
-                      <td>
-                        <%= db[iCount].compare_successful %>
-                      </td>
-                      <td>
-                        <%= db[iCount].feeling_comparison %>
-                      </td>
-                      <td>
-                        <%= db[iCount].validation_social %>
-                      </td>
-                      <td>
-                        <%= db[iCount].depressed_down %>
-                      </td>
-                      <td>
-                        <%= db[iCount].fluctuate_interests %>
-                      </td>
-                      <td>
-                        <%= db[iCount].sleep_issues %>
-                      </td>
-                    </tr>
-                    <% } %>
-                </tbody>
-              </table>
-            </div>
-          </div>
+        <div class="title-center bg-white">
+            <h2><b>SURVEY DATA - DEMOGRAPHICS AND BEHAVIOR</b></h2>
         </div>
-      </div>
-      <div class="col-1">
-      </div>
-    </div>
-  <br><br>
+  <div class="horizontal-scroll">
+      <table id="myTable" class="display">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>TIMESTAMP</th>
+            <th>AGE</th>
+            <th>GENDER</th>
+            <th>RELATIONSHIP STATUS</th>
+            <th>OCCUPATION STATUS</th>
+            <th>LOCATION</th>
+            <th>USE OF SOCIAL MEDIA</th>
+            <th>AVERAGE TIME/DAY</th>
+            <th>NO SPECIFIC PURPOSE</th>
+            <th>DISTRACTED BY SOCIAL MEDIA</th>
+            <th>RESTLESS WITHOUT <br> SOCIAL MEDIA</th>
+            <th>DISTRACTED IN GENERAL</th>
+            <th>BOTHERED BY WORRIES</th>
+            <th>DIFFICULT TO CONCENTRATE</th>
+            <th>COMPARE TO <br> SUCCESSFUL PEOPLE</th>
+            <th>FEELINGS ABOUT COMPARISONS</th>
+            <th>SOCIAL VALIDATION</th>
+            <th>FEEL DEPRESSED <br> OR DOWN</th>
+            <th>INTERESTS FLUCTUATE</th>
+            <th>SLEEP ISSUES</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (let iCount=0; iCount < db.length; iCount++) { %>
+            <tr>
+              <td>
+                <%= db[iCount].unique_id %>
+              </td>
+              <td>
+                <%= db[iCount].timestamp %>
+              </td>
+              <td>
+                <%= db[iCount].age %>
+              </td>
+              <td>
+                <%= db[iCount].gender %>
+              </td>
+              <td>
+                <%= db[iCount].rel_status %>
+              </td>
+              <td>
+                <%= db[iCount].occ_status %>
+              </td>
+              <td>
+                <%= db[iCount].location %>
+              </td>
+              <td>
+                <%= db[iCount].social_media_usage %>
+              </td>
+              <td>
+                <%= db[iCount].avg_time_social %>
+              </td>
+              <td>
+                <%= db[iCount].use_no_purpose %>
+              </td>
+              <td>
+                <%= db[iCount].distracted_social %>
+              </td>
+              <td>
+                <%= db[iCount].restless_no_media %>
+              </td>
+              <td>
+                <%= db[iCount].distracted_general %>
+              </td>
+              <td>
+                <%= db[iCount].bothered_worries %>
+              </td>
+              <td>
+                <%= db[iCount].difficult_concentrated %>
+              </td>
+              <td>
+                <%= db[iCount].compare_successful %>
+              </td>
+              <td>
+                <%= db[iCount].feeling_comparison %>
+              </td>
+              <td>
+                <%= db[iCount].validation_social %>
+              </td>
+              <td>
+                <%= db[iCount].depressed_down %>
+              </td>
+              <td>
+                <%= db[iCount].fluctuate_interests %>
+              </td>
+              <td>
+                <%= db[iCount].sleep_issues %>
+              </td>
+            </tr>
+            <% } %>
+        </tbody>
+      </table> 
+  </div>
   <script>
     $(document).ready( function () {
     $('#myTable').DataTable();

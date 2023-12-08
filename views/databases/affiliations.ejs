@@ -2,133 +2,131 @@
 <html lang="en">
 
 <head>
-    <script>
-        function logout() {
-            localStorage.setItem("loggedin", 'False');
-            window.location.replace("/");
-        }
-    </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
-    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+  <script>
+    function logout() {
+      localStorage.setItem("loggedin", 'False');
+      window.location.replace("/");
+    }
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Survey Data - Affiliations</title>
+  <!-- Font Awesome icons (free version)-->
+  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+  <!-- Google fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+  <link
+      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
+  <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+  <style>
+    .horizontal-scroll {
+      overflow-x: auto;
+      white-space: nowrap;
+      width: 100%;
+      padding-top: 10rem;
+    }
+  </style>
 </head>
 
-<body id="page-top">
-    <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg bg-black fixed-top" id="mainNav">
-        <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="/#page-top">Home</a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                aria-label="Toggle navigation">
-                Menu
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item" id="create"><a class="nav-link" href="/createAccount">Create Account</a></li>
-                    <li class="nav-item" id="selectdb"><a class="nav-link" href="/selectdb">Database</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/#dashboard">Dashboard</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/survey">Survey</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/#alternatives">More</a></li>
-                    <li class="nav-item" onclick="logout()"><a class="nav-link" href="/login" id="login">Login</a></li>
-                    <li class="nav-item" id="modify"><a class="nav-link" href="/modify"><i class="fas fa-user"></i></a></li>
-                </ul>
-            </div>
+<body>
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-lg bg-black fixed-top" id="mainNav">
+    <div class="container px-4 px-lg-5">
+      <a class="navbar-brand" href="/#page-top">Home</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+        aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item" id="create"><a class="nav-link" href="/createAccount">Create Account</a></li>
+          <li class="nav-item" id="selectdb"><a class="nav-link" href="/selectdb">Database</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#dashboard">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="/survey">Survey</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#alternatives">More</a></li>
+          <li class="nav-item" onclick="logout()"><a class="nav-link" href="/login" id="login">Login</a></li>
+          <li class="nav-item" id="modify"><a class="nav-link" href="/modify"><i class="fas fa-user"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+        <div class="title-center bg-white">
+            <h2><b>SURVEY DATA - AFFILIATIONS</b></h2>
         </div>
-    </nav>
-    <section class="projects-section bg-white">
-        <div class="row">
-            <div class="text-center">
-                <h2 id="database"><b>Organization Affiliation Data</b></h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-1 my-5 mx-3">
-                <span>
-                    <button class="btn btn-sm btn-secondary" href="/selectdb">Back</button>
-                </span>
-            </div>
-            <div class="col-6 mx-4 my-5">
-            </div>
-            <div class="col-1">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-auto mx-2">
-                <table id="myTable" class="display">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>AFFILIATED WITH: <br> UNIVERSITY</th>
-                            <th>AFFILIATED WITH: <br> PRIVATE</th>
-                            <th>AFFILIATED WITH: <br> SCHOOL</th>
-                            <th>AFFILIATED WITH: <br> COMPANY</th>
-                            <th>AFFILIATED WITH: <br> GOVERNMENT</th>
-                            <th>AFFILIATED WITH: <br> NONE</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% for (let iCount=0; iCount < db.length; iCount++) { %>
-                            <tr>
-                                <td>
-                                    <%= db[iCount].id %>
-                                </td>
-                                <td>
-                                    <%= db[iCount].ao_uv %>
-                                </td>
-                                <td>
-                                    <%= db[iCount].ao_pr %>
-                                </td>
-                                <td>
-                                    <%= db[iCount].ao_sc %>
-                                </td>
-                                <td>
-                                    <%= db[iCount].ao_co %>
-                                </td>
-                                <td>
-                                    <%= db[iCount].ao_gt %>
-                                </td>
-                                <td>
-                                    <%= db[iCount].ao_na %>
-                                </td>
-                                </td>
-                            </tr>
-                            <% } %>
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-1"></div>
-        </div>
-    </section>
-    <script>
-        $(document).ready( function () {
-        $('#myTable').DataTable();
-        });
+  <div class="horizontal-scroll">
+    <table id="myTable" class="display">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>AFFILIATED WITH: <br> UNIVERSITY</th>
+                <th>AFFILIATED WITH: <br> PRIVATE</th>
+                <th>AFFILIATED WITH: <br> SCHOOL</th>
+                <th>AFFILIATED WITH: <br> COMPANY</th>
+                <th>AFFILIATED WITH: <br> GOVERNMENT</th>
+                <th>AFFILIATED WITH: <br> NONE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (let iCount=0; iCount < db.length; iCount++) { %>
+                <tr>
+                    <td>
+                        <%= db[iCount].id %>
+                    </td>
+                    <td>
+                        <%= db[iCount].ao_uv %>
+                    </td>
+                    <td>
+                        <%= db[iCount].ao_pr %>
+                    </td>
+                    <td>
+                        <%= db[iCount].ao_sc %>
+                    </td>
+                    <td>
+                        <%= db[iCount].ao_co %>
+                    </td>
+                    <td>
+                        <%= db[iCount].ao_gt %>
+                    </td>
+                    <td>
+                        <%= db[iCount].ao_na %>
+                    </td>
+                    </td>
+                </tr>
+                <% } %>
+        </tbody>
+    </table>
+  </div>
+  <script>
+    $(document).ready( function () {
+    $('#myTable').DataTable();
+    });
 
-        if ((localStorage.getItem("loggedin") == 'True') && (localStorage.getItem("admin") == 'True')) {
-            document.getElementById("login").href = "#";
-            document.getElementById("login").innerHTML = "Logout";
-            document.getElementById("create").style.visibility = "visible";
-            document.getElementById("modify").style.visibility = "hidden";
-            document.getElementById("selectdb").style.visibility = "visible";
-        }
-        else if ((localStorage.getItem("loggedin") == 'True') && (localStorage.getItem("admin") == 'False')) {
-            document.getElementById("login").href = "#";
-            document.getElementById("login").innerHTML = "Logout";
-            document.getElementById("create").style.visibility = "hidden";
-            document.getElementById("modify").style.visibility = "visible";
-            document.getElementById("selectdb").style.visibility = "visible";
-        }
-        else {
-            window.location.replace("/login");
-            alert("You do not have the necessary access to view this page. Please contact your administrator if you think this is a mistake.")
-        }
-
-    </script>
+    if ((localStorage.getItem("loggedin") == 'True') && (localStorage.getItem("admin") == 'True')) {
+      document.getElementById("login").href = "#";
+      document.getElementById("login").innerHTML = "Logout";
+      document.getElementById("create").style.visibility = "visible";
+      document.getElementById("modify").style.visibility = "hidden";
+      document.getElementById("selectdb").style.visibility = "visible";
+    }
+    else if ((localStorage.getItem("loggedin") == 'True') && (localStorage.getItem("admin") == 'False')) {
+      document.getElementById("login").href = "#";
+      document.getElementById("login").innerHTML = "Logout";
+      document.getElementById("create").style.visibility = "hidden";
+      document.getElementById("modify").style.visibility = "visible";
+      document.getElementById("selectdb").style.visibility = "visible";
+    }
+    else {
+      window.location.replace("/login");
+      alert("You do not have the necessary access to view this page. Please contact your administrator if you think this is a mistake.")
+    }
+  </script>
 </body>
 
 </html>
